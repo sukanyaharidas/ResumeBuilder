@@ -1,0 +1,35 @@
+<form [formGroup]="childForm3">
+    <br>
+    <h4>
+        Skill {{arrayIndex+1}}
+    </h4>
+        <div class="container">
+            <div class="row">
+              <div class="col-md">
+               
+                <mat-form-field appearance="fill">
+                  <mat-label>Skill</mat-label>
+                  <input type="text" matInput placeholder="Your Skill" formControlName="skill"  required>
+                </mat-form-field><br>
+        
+              </div>
+              
+              <div class="col-md">
+                
+                <button  class="btn btn-danger " *ngIf="totalSkillDetails>1" (click)="deleteSkillDetails(arrayIndex)"  >Remove</button>
+
+
+              </div>
+              <div class="col-md">
+              
+                
+    
+        
+              </div>
+            </div>
+          </div> 
+
+    </form>
+    
+    
+    

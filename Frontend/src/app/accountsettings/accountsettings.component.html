@@ -1,0 +1,33 @@
+<app-logged-inheader></app-logged-inheader>
+<app-sidenav></app-sidenav>
+
+<div class="account">
+    <h1>Your Account</h1>
+
+<div class="name1">
+    <h3>Username</h3>
+ 
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name="'p_fname"[(ngModel)]='userData.fname'  [disabled]="inactive1"  aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <span class="input-group-text" (click)="changename()" id="basic-addon2" style="cursor:pointer ;">Edit</span>
+        </div>
+        <span class="input-group-text" *ngIf="showme" (click)="savename()"  style="cursor:pointer ;">Save</span>
+      </div>
+
+</div>
+
+
+<div class="name">
+    <h3>Email Address</h3>
+
+<div class="input-group mb-3">
+    <input type="text" class="form-control"  name="'p_emailid"[(ngModel)]='userData.emailid'   [disabled]="inactive2" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <span class="input-group-text"  (click)="changemail()" id="basic-addon2"  style="cursor:pointer ;">Edit</span>
+    </div>
+    <span class="input-group-text" *ngIf="showme2" (click)="savemail()"  style="cursor:pointer ;">save</span>
+
+  </div>
+</div>
+</div>

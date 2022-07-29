@@ -1,0 +1,41 @@
+.mat-stepper-horizontal {
+  margin-top: 6px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+mat-stepper{
+  height: 600px;
+  overflow:auto;
+  /* background-color: rgb(246, 247, 253); */
+  background-image: url('/assets/img/job.jpg');
+  background-size: cover;
+  margin-top: 2em;
+  padding-top:3em;
+
+}
+
+/* #add{
+  background-color: rgb(161, 161, 180);
+} */
+
+.btn-success{
+  background-color: green;
+}
+
+.btn-danger{
+  background-color: red;
+}
+
+h3{
+  font-style: italic;
+  color: rgb(12, 122, 122);
+ font-weight: bold;
+}
+
+.btn-primary{
+  background-color: rgb(14, 137, 219);
+}
+
