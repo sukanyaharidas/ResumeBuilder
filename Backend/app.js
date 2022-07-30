@@ -6,12 +6,12 @@ const resumecred  = require('./src/model/models/resumemodel')
 const signup= require('./src/model/models/signupmodule')
 const jwt = require("jsonwebtoken");
 
-
+let currentUser='';
 const mongoose = require("mongoose")
 const dotenv = require("dotenv");
-const { sign } = require("crypto");
+// const { sign } = require("crypto");
 const app = new express();
-const port = 4000;
+const port = 3000;
 
 dotenv.config();
 app.use(cors());
@@ -21,25 +21,26 @@ app.use(express.json());
 
 
 
-function verifyToken(req,res,next){
-  if(!req.headers.authorization){
-    return res.status(401).send('unauthorizedrequest')
-  }
-  let token=req.headers.authorization.split('')[1]
-  if(token=='null'){
-    return res.status(401).send('unauthorizedrequest')
+// function verifyToken(req,res,next){
+//   if(!req.headers.Authorization){
+//     return res.status(401).send('unauthorizedrequest')
+//   }
+//   let token=req.headers.Authorization.split('')[1]
+//   if(token=='null'){
+//     return res.status(401).send('unauthorizedrequest')
 
-  }
-  let payload=jwt.verify(token, 'secretKey')
-  console.log(payload);
-  if(!payload)
-{
-  return res.status(401).send('unauthorizedrequest')
-  req.userId=payload.subject;
-  next()
+//   }
+//   let payload=jwt.verify(token, 'secretKey')
+//   console.log(payload);
+//   if(!payload)
+// {
+//   return res.status(401).send('unauthorizedrequest')
+//   req.userId=payload.subject;
+  
 
-}
-}
+// }
+// next();
+// }
 
 // Databaseconnection
 mongoose.connect(process.env.DATABASE_URL, {
@@ -49,19 +50,40 @@ mongoose.connect(process.env.DATABASE_URL, {
     .catch(err => console.log(err));
 
 // requiring routes
-app.post('/insert',verifyToken, function (req,verifyToken, res) {
-  console.log(req.body.data.personal.personalDetails)
+app.post('/insert',function (req, res) {
+  console.log(currentUser);
     
   var resumeinputs = {
  personal:req.body.data.personal.personalDetails,
  educational:req.body.data.educational.educationDetails,
  workexp:req.body.data.workexp.workExperience,
  hobbies:req.body.data.hobbies.hobbyDetails,
- skills:req.body.data.skills.skillDetails
+ skills:req.body.data.skills.skillDetails,
+userid:currentUser
   }
-console.log(resumeinputs);
+
   var inputs = new resumecred(resumeinputs);
-  inputs.save()
+    inputs.save();
+    res.send();
+// console.log(resumeinputs.userid);
+// console.log(resumeinputs);
+// resumecred.findOne({userid:currentUser},(err,data)=>{
+//   if(!data){
+//     var inputs = new resumecred(resumeinputs);
+//     inputs.save()
+//   }
+//   else{
+
+//     resumecred.findByIdAndUpdate({userid:currentUser},
+//       {$set:{hobbies:req.body.data.hobbies.hobbyDetails,
+//                }})
+
+  
+ 
+//   }
+// })
+
+
    
     
 })
@@ -69,12 +91,18 @@ console.log(resumeinputs);
 // const resumerouter = require('./src/model/routes/resumeroute')
 
 // app.use('/api',resumerouter)
-app.get('/api/resdata',(req,res)=>{
-  resumecred.find()
-  .then((data)=>{
+app.get('/resdata',(req,res)=>{
+  resumecred.findOne({userid:currentUser},(err,data)=>{
+    if(!data){
+      console.log("error is",err);
+      res.status(401).send();
+    }
+    else{
       console.log(data)
       res.send(data)
+    }
   })
+ 
 })
 
 
@@ -148,6 +176,7 @@ app.post('/login', (req, res) => {
         res.status(401).send();
       }
       else{
+        currentUser= req.body.authData.username;
         let payload = { subject: user.email + user.password };
             let token = jwt.sign(payload, "secretKey");
             res.status(200).send({ token });
@@ -203,5 +232,5 @@ app.get('/', (req, res) => {
 
 // port listening
 app.listen(port, function () {
-    console.log('running on port 4000');
+    console.log('running on port 3000');
 })

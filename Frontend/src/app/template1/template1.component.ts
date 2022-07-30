@@ -7,7 +7,13 @@ import { ResumeserviceService } from '../resumeservice.service';
   styleUrls: ['./template1.component.css']
 })
 export class Template1Component implements OnInit {
-  Data:any=[]
+  Data:any={
+    personal:{},
+    educational:[],
+    workexp:[],
+    skills:[],
+    hobbies:[]
+   }
   constructor(private resumeservice:ResumeserviceService) {}
   ngOnInit() {
     

@@ -14,6 +14,7 @@ export class PersonalDetailsComponent {
   name = 'Angular ' + VERSION.major;
   dataimage:any;
 
+
    @ViewChild('fileInput') fileInput: ElementRef |any;
   fileAttr = '';
 
@@ -28,6 +29,9 @@ export class PersonalDetailsComponent {
 
 @Output()
 public deletePersonalDetailsEvent:EventEmitter<number>=new EventEmitter<number>();
+  static unamePattern: string | RegExp="^[0-9]{6}$";
+  static emailPattern: string | RegExp="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  static phonePattern: string | RegExp="^[0-9]{10}$"; 
   constructor() { }
 
   static addPersonalDetails():FormGroup{
@@ -35,9 +39,9 @@ public deletePersonalDetailsEvent:EventEmitter<number>=new EventEmitter<number>(
       name: new FormControl('',Validators.required),
       address: new FormControl('',Validators.required),
       image: new FormControl('',Validators.required),
-      email: new FormControl('', [Validators.required,Validators.email]),
-      pin: new FormControl('',Validators.required),
-      phone: new FormControl('',Validators.required),
+      email: new FormControl('', [Validators.required,Validators.pattern(this.emailPattern)]),
+      pin: new FormControl('',[Validators.required,Validators.pattern(this.unamePattern)]),
+      phone: new FormControl('',[Validators.required,Validators.pattern(this.phonePattern)]),
       city: new FormControl('',Validators.required),
       aboutMe: new FormControl('', Validators.required),
       role: new FormControl('', Validators.required)

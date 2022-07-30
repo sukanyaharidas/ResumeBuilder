@@ -6,6 +6,8 @@ import { SignupComponent } from '../signup/signup.component';
 import { Template1Component } from '../template1/template1.component';
 import { AuthServiceService } from '../auth-service.service';
 import { Router } from '@angular/router';
+// import { Cookie } from 'ng2-cookies/ng2-cookies';
+
 
 @Component({
   selector: 'app-header',
@@ -39,8 +41,13 @@ export class HeaderComponent implements OnInit {
   }
 
   logoutUser(){
+    // Cookie.set('isUser', 'false');
+    // Cookie.set('isAdmin', 'false');
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     this.router.navigate(['/']);
+    // Cookie.set('isAdmin', 'false');
+
   }
 
 }

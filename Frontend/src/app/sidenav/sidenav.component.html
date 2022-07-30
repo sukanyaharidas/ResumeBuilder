@@ -19,7 +19,7 @@
 
       </li> -->
   
-      <li *ngIf="auth.loggedIn() && auth.Userrole">
+      <li *ngIf="userRole">
         <a routerLink="/home_user" >
           <i class='bx bx-folder'></i>
           <span class="links_name" >My Projects</span>
@@ -37,7 +37,7 @@
   
   
       </li> -->
-      <li  *ngIf="auth.loggedIn()">
+      <li  >
         <a routerLink="/home_user" >
           <i class='bx bxs-grid-alt'></i>
           <span class="links_name">Templates</span>
@@ -46,7 +46,7 @@
   
   
       </li>
-      <li  *ngIf="auth.loggedIn() && auth.Userrole">
+      <li *ngIf="userRole" >
         <a routerLink="/data" >
           <i class='bx bxs-grid-alt'></i>
           <span class="links_name" >Create Resume</span>
@@ -55,7 +55,7 @@
   
   
       </li>
-      <li *ngIf="auth.loggedIn() && auth.Adminrole">
+      <li *ngIf="adminRole">
         <a routerLink="/Accountsettings">
           <i class='bx bx-user'></i>
           <span class="links_name">Account</span>
@@ -74,7 +74,7 @@
   
       </li> -->
 
-      <li *ngIf="auth.loggedIn() && auth.Adminrole">
+      <li *ngIf="adminRole">
         <a routerLink="/home_user" >
           <i class='bx bx-help-circle'></i>
           <span class="links_name">About Us</span>
