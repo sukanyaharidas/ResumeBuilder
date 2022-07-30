@@ -55,13 +55,14 @@ export class ResumeserviceService {
 
   senddata(data:any){{
     console.log(data);
-    return this.http.post('http://localhost:3000/insert', {data})
-    .subscribe((data)=>console.log(data));
+    return this.http.post('http://localhost:4000/insert', {data})
+    .subscribe((data)=>console.log('returndata'));
   }
-
 }
+
+
 getdata(){
-  return this.http.get('http://localhost:3000/api/resdata')
+  return this.http.get('http://localhost:4000/api/resdata')
   
 }
 

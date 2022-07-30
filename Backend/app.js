@@ -22,10 +22,10 @@ app.use(express.json());
 
 
 function verifyToken(req,res,next){
-  if(!req.headers.authorization){
+  if(!req.headers.Authorization){
     return res.status(401).send('unauthorizedrequest')
   }
-  let token=req.headers.authorization.split('')[1]
+  let token=req.headers.Authorization.split('')[1]
   if(token=='null'){
     return res.status(401).send('unauthorizedrequest')
 
@@ -36,21 +36,21 @@ function verifyToken(req,res,next){
 {
   return res.status(401).send('unauthorizedrequest')
   req.userId=payload.subject;
-  next()
-
 }
+next()
 }
-
+const db ='mongodb+srv://Resume_Builder123:VMNrcM0q10uJES9j@resumebuilder.rjnsjcb.mongodb.net/?retryWrites=true&w=majority'
 // Databaseconnection
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect(db, {
     useNewUrlParser: true,
 })
     .then(() => console.log("MongoDB Connected..."))
     .catch(err => console.log(err));
 
 // requiring routes
-app.post('/insert',verifyToken, function (req,verifyToken, res) {
-  console.log(req.body.data.personal.personalDetails)
+app.post('/insert', function (req, res) {
+
+  console.log('reqdata',req.body.data.personal.personalDetails)
     
   var resumeinputs = {
  personal:req.body.data.personal.personalDetails,
@@ -62,7 +62,7 @@ app.post('/insert',verifyToken, function (req,verifyToken, res) {
 console.log(resumeinputs);
   var inputs = new resumecred(resumeinputs);
   inputs.save()
-   
+   res.send()
     
 })
 
@@ -156,19 +156,6 @@ app.post('/login', (req, res) => {
     })
 
   })
-  //   .clone()
-  //   .then((user) => {
-  //     if(user !== null){
-  //     let payload = { subject: user.email + user.password };
-  //     let token = jwt.sign(payload, "secretKey");
-  //     res.status(200).send({ token });
-  //     }
-  //     else{
-  //       res.status(401).send('Wrong Credentials')
-  //     }
-  //   });
-  
-  // });
 
 
 // admin login
@@ -203,5 +190,5 @@ app.get('/', (req, res) => {
 
 // port listening
 app.listen(port, function () {
-    console.log('running on port 4000');
+    console.log('running on port 3000');
 })

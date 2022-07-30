@@ -11,6 +11,21 @@
 body{
 	background: linear-gradient(to right, #3525af, #9153c9);
 }
+.cont{
+    margin-top: 50px;
+}
+.buttons{
+    text-align: right;
+    
+}
+.buttons a{
+    margin-left: 5px;
+    padding: 5px 5px;
+    border: 1px;
+    background: rgb(90, 107, 100);
+    color: white;
+}
+
 
 .resume{
 	width: 800px;

@@ -4,14 +4,14 @@ const Schema=mongoose.Schema;
 
 const resumedetails = new Schema({
 
-    personal:[{  
+    educational:[{  
          qualification: String,
         courseDetails: String,
         institution: String,
         startDate: String,
         course: String,
         endDate: String,}],
-        educational:[{
+        personal:[{
             name: String,
             role: String,
             aboutMe: String,
