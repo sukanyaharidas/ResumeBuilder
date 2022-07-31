@@ -1,5 +1,20 @@
 
-    <section>
+<div class="cont">
+    <div class="buttons">
+      <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle scrollto" id="navbarDropdown" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+           Download
+         </a>
+         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <li><a class="dropdown-item"(click)="downloadpdf()"> Download as PDF</a></li>
+           <li><a class="dropdown-item" >Download as Excel</a></li>
+           <li><a class="dropdown-item" >Download as PDF</a></li>
+
+         </ul>
+         <a class="nav-item scrollto active" class="btn">Save</a>
+       </li>
+</div>
+    <section   id="contentToConvert">
         <div class="page-content">
             <div class="container">
       <div class="cover shadow-lg bg-white">
@@ -8,9 +23,9 @@
             <div class="col-lg-4 col-md-5">
               <div class="avatar hover-effect bg-white shadow-sm p-1"><img src="assets/img/avatar.jpg" width="200" height="200"/></div>
             </div>
-            <div class="col-lg-8 col-md-7 text-center text-md-start">
-              <h2 class="h1 mt-2" >Donald Duck</h2>
-              <h3 >Graphic Designer & Web Developer</h3>
+            <div *ngFor="let i of Data.personal" class="col-lg-8 col-md-7 text-center text-md-start">
+              <h2 class="h1 mt-2" >{{i.name}}</h2>
+              <h3 >{{i.role}}</h3>
               <button class="btn btn-info btnbtn float-end" [routerLink]="['/data']"  ><i class="bx bxs-pencil"></i></button>
               <button class="btn btn-success btnbtn float-end"  ><i class="bx bxs-file-pdf"></i></button>
               <!-- <div class="d-print-none" ><a class="btn btn-light text-dark shadow-sm mt-1 me-1"  target="_blank">Download CV</a><button class="btn btn-success shadow-sm mt-1" [routerLink]="['/data']" ><i class="fa fa-pencil"></i></button></div> -->
@@ -18,9 +33,9 @@
             
                 <div class="col">
                               
-                    <div  >140, City Center, New York, U.S.A</div>              
-                    <div  >+0718-111-0011</div>              
-                    <div  >Donald@company.com</div>
+                    <div  >{{i.city}}</div>             
+                    <div  >{{i.phone}}</div>              
+                    <div  >{{i.email}}</div>
                   
                 </div>
                
@@ -28,37 +43,37 @@
             </div>
           </div>
         </div>
-        <div class="about-section pt-4 px-3 px-lg-4 mt-1">
+        <div *ngFor="let i of Data.personal" class="about-section pt-4 px-3 px-lg-4 mt-1">
           <div class="row">
             <div class="col-md-6">
               <h2 class="h3 mb-3">About Me</h2>
-              <p>Hello! I’m Donald Duck. I am passionate about UI/UX design and Web Design. I am a skilled Front-end Developer and master of Graphic Design tools such as Photoshop and Sketch.</p>
+              <p>{{i.aboutMe}}</p>
             </div>
             <div class="col-md-5 offset-md-1">
               <div class="row mt-2">
                 <div class="col-sm-4">
-                  <div class="pb-1">Age</div>
+                  <!-- <div class="pb-1">Age</div> -->
                 </div>
                 <div class="col-sm-8">
-                  <div class="pb-1 text-secondary">28</div>
+                  <!-- <div class="pb-1 text-secondary">28</div> -->
                 </div>
                 <div class="col-sm-4">
                   <div class="pb-1">Email</div>
                 </div>
                 <div class="col-sm-8">
-                  <div class="pb-1 text-secondary">Donald@company.com</div>
+                  <div class="pb-1 text-secondary">{{i.email}}</div>
                 </div>
                 <div class="col-sm-4">
                   <div class="pb-1">Phone</div>
                 </div>
                 <div class="col-sm-8">
-                  <div class="pb-1 text-secondary">+0718-111-0011</div>
+                  <div class="pb-1 text-secondary">{{i.phone}}</div>
                 </div>
                 <div class="col-sm-4">
                   <div class="pb-1">Address</div>
                 </div>
                 <div class="col-sm-8">
-                  <div class="pb-1 text-secondary">140, City Center, New York, U.S.A</div>
+                  <div class="pb-1 text-secondary">{{i.address}}</div>
                 </div>
               </div>
             </div>
@@ -67,94 +82,49 @@
         <hr class="d-print-none"/>
         <div class="skills-section px-3 px-lg-4">
           <h2 class="h3 mb-3">Professional Skills</h2>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="mb-2"><span>HTML</span>
+          <div *ngFor="let i of Data.skills;let k = index" class="row">
+            <div   class="col-md-6">
+              <div  *ngIf="k%2==0" class="mb-2"><span>{{i.skill}}</span>
                 <div class="progress my-1">
                   <div class="progress-bar bg-primary" role="progressbar"   style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
-              <div class="mb-2"><span>CSS</span>
-                <div class="progress my-1">
-                  <div class="progress-bar bg-primary" role="progressbar"   style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-              <div class="mb-2"><span>JavaScript</span>
-                <div class="progress my-1">
-                  <div class="progress-bar bg-primary" role="progressbar"    style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
             </div>
-            <div class="col-md-6">
-              <div class="mb-2"><span>Adobe Photoshop</span>
+            <div  class="col-md-6">
+              <div *ngIf="k%2!=0" class="mb-2"><span>{{i.skill}}</span>
                 <div class="progress my-1">
                   <div class="progress-bar bg-success" role="progressbar"    style="width: 80%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
-              <div class="mb-2"><span>Sketch</span>
-                <div class="progress my-1">
-                  <div class="progress-bar bg-success" role="progressbar"    style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-              <div class="mb-2"><span>Adobe XD</span>
-                <div class="progress my-1">
-                  <div class="progress-bar bg-success" role="progressbar"    style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
+             
             </div>
           </div>
         </div>
         <hr class="d-print-none"/>
         <div class="work-experience-section px-3 px-lg-4">
           <h2 class="h3 mb-4">Work Experience</h2>
-          <div class="timeline">
+          <div *ngFor="let i of Data.workexp" class="timeline">
             <div class="timeline-card timeline-card-primary card shadow-sm">
               <div class="card-body">
-                <div class="h5 mb-1">Frontend Developer <span class="text-muted h6">at ABC Agency</span></div>
-                <div class="text-muted text-small mb-2">May, 2015 - Present</div>
-                <div>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</div>
-              </div>
-            </div>
-            <div class="timeline-card timeline-card-primary card shadow-sm">
-              <div class="card-body">
-                <div class="h5 mb-1">Graphic Designer <span class="text-muted h6">at CDS Studio</span></div>
-                <div class="text-muted text-small mb-2">June, 2013 - May, 2015</div>
-                <div>Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</div>
-              </div>
-            </div>
-            <div class="timeline-card timeline-card-primary card shadow-sm">
-              <div class="card-body">
-                <div class="h5 mb-1">Junior Web Developer <span class="text-muted h6">at FKL Studio</span></div>
-                <div class="text-muted text-small mb-2">Jan, 2011 - May, 2013</div>
-                <div>User generated content in real-time will have multiple touchpoints for offshoring. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</div>
+                <div class="h5 mb-1">{{i.jobProfile}}<span class="text-muted h6">  at {{i.companyName}}</span></div>
+                <div class="text-muted text-small mb-2">{{i.startDate1}} -- {{i.endDate1}}</div>
+                <div>{{i.jobDescription}}</div>
               </div>
             </div>
           </div>
         </div>
+
+
         <hr class="d-print-none"/>
         <div class="page-break"></div>
         <div class="education-section px-3 px-lg-4 pb-4">
           <h2 class="h3 mb-4">Education</h2>
-          <div class="timeline">
+          <div *ngFor="let i of Data.educational" class="timeline">
             <div class="timeline-card timeline-card-success card shadow-sm">
               <div class="card-body">
-                <div class="h5 mb-1">Masters in Information Technology <span class="text-muted h6">from International University</span></div>
-                <div class="text-muted text-small mb-2">2011 - 2013</div>
-                <div>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</div>
-              </div>
-            </div>
-            <div class="timeline-card timeline-card-success card shadow-sm">
-              <div class="card-body">
-                <div class="h5 mb-1">Bachelor of Computer Science <span class="text-muted h6">from Regional College</span></div>
-                <div class="text-muted text-small mb-2">2007 - 2011</div>
-                <div>Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</div>
-              </div>
-            </div>
-            <div class="timeline-card timeline-card-success card shadow-sm">
-              <div class="card-body">
-                <div class="h5 mb-1">Science and Mathematics <span class="text-muted h6">from IJGHSS</span></div>
-                <div class="text-muted text-small mb-2">1995 - 2007</div>
-                <div>User generated content in real-time will have multiple touchpoints for offshoring. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</div>
+                <div class="h5 mb-1">{{i.course}}<span class="text-muted h6"> from {{i.institution}}</span></div>
+                <div class="text-muted text-small mb-2">{{i.startDate}} -- {{i.endDate}}</div>
+                <div>{{i.courseDetails}}</div>
               </div>
             </div>
           </div>
@@ -168,3 +138,4 @@
           </div>
     </section>
 
+  </div>

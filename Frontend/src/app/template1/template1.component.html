@@ -1,57 +1,88 @@
+<div class="cont">
+    <div class="buttons">
+		     <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle scrollto" id="navbarDropdown" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+              Download
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item"(click)="downloadpdf()" style="cursor: pointer;"> Download as PDF</a></li>
+              <li><a class="dropdown-item"  style="cursor: pointer;">Download as Excel</a></li>
+              <li><a class="dropdown-item" style="cursor: pointer;">Download as PDF</a></li>
 
-    <main class="main-content">
+            </ul>
+			<a class="nav-item scrollto active" class="btn">Save</a>
+          </li>
+		    
+	</div>
+	
+	<main class="main-content" id="contentToConvert">
 	
 
 		<section class="left-section">
-			<div class="left-content">
+			<div  class="left-content">
 				<div class="profile">
 					<p></p>
 					<p></p>
-					<div class="image">
-						<img src="assets/img/avatar.jpg" alt="">
+					<div *ngFor="let i of Data.personal" class="image">
+						<img src="i.image" alt="">
 					</div>
-					<h2 class="name">Lorem Dola Ipsum</h2>
-					<p class="career">Software Engineer</p>
+					<div *ngFor="let i of Data.personal">
+						<h2   class="name">{{i.name}}</h2>
+						<p class="career">{{i.role}}</p>
+					</div>
+					
 				</div>
-				<div class="contact-info">
+				<div *ngFor="let i of Data.personal" class="contact-info">
 					<h3 class="main-title">Contact Info</h3>
 					<ul>
 						<li>
-							<i class="fa fa-phone"></i>
-							07661892982
+							<i class="fa fa-fax"></i>
+							{{i.email}}
 						</li>
 						<li>
 							<i class="fa fa-fax"></i>
-							loremipsum@gmail.com
+							{{i.address}}
 						</li>
 						<li>
+							<i class="fa fa-fax"></i>
+							{{i.city}}
+						</li>
+						<li>
+							<i class="fa fa-fax"></i>
+							{{i.pin}}
+						</li>
+						<li>
+							<i class="fa fa-phone"></i>
+							{{i.phone}}
+						</li>
+						<!-- <li>
 							<i class="fa fa-globe"></i>
 							www.loremipsum.com
-						</li>
-						<li>
+						</li> -->
+						<!-- <li>
 							<i class="fa fa-facebook"></i>
 							www.facebook.com/lorem
-						</li>
-						<li>
+						</li> -->
+						<!-- <li>
 							<i class="fa fa-instagram"></i>
 							@loremipsum
 						</li>
 						<li>
 							<i class="fa fa-map-marker"></i>
 							37 Pramount St, London
-						</li>
+						</li> -->
 					</ul>
 				</div>
-				<div class="skills-section">
+				<div  class="skills-section">
 					<h3 class="main-title">Skills</h3>
-					<ul>
+					<ul *ngFor="let i of Data.skills;">
 						<li>
-							<p class="skill-title">Javascript</p>
+							<p class="skill-title">{{i.skill}}</p>
 							<div class="progress-bar">
 								<div class="progress js-progress"></div>
 							</div>
 						</li>
-						<li>
+						<!-- <li>
 							<p class="skill-title">Photoshop</p>
 							<div class="progress-bar">
 								<div class="progress ps-progress"></div>
@@ -98,53 +129,16 @@
 							<div class="progress-bar">
 								<div class="progress ps-progress"></div>
 							</div>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 				<div class="references-section">
-					<h3 class="main-title">References</h3>
-					<div class="referee">
-						<h6 class="sub-title">Michael Bowen</h6>
-						<p class="sub-para">Product Manager</p>
-						<ul>
+						<h3 class="main-title">Hobbies</h3>
+						<ul *ngFor="let i of Data.hobbies;">
 							<li>
-								<i class="fa fa-phone"></i>
-								07661892982
-							</li>
-							<li>
-								<i class="fa fa-fax"></i>
-								loremipsum@gmail.com
+								<p class="skill-title">{{i.hobby}}</p>
 							</li>
 						</ul>
-					</div>
-					<div class="referee">
-						<h6 class="sub-title">Joseph Kumar</h6>
-						<p class="sub-para">Senior Developer</p>
-						<ul>
-							<li>
-								<i class="fa fa-phone"></i>
-								07661892982
-							</li>
-							<li>
-								<i class="fa fa-fax"></i>
-								loremipsum@gmail.com
-							</li>
-						</ul>
-					</div>
-					<div class="referee">
-						<h6 class="sub-title">Rick Ross</h6>
-						<p class="sub-para">Product Manager</p>
-						<ul>
-							<li>
-								<i class="fa fa-phone"></i>
-								07661892982
-							</li>
-							<li>
-								<i class="fa fa-fax"></i>
-								loremipsum@gmail.com
-							</li>
-						</ul>
-					</div>
 				</div>
 			</div>
 		</section>
@@ -153,138 +147,68 @@
 				<section><button class="btn  btntemp1 float-end" [routerLink]="['/data']"  >Edit</button>
 					<button class="btn  btntemp1 float-end"  >Save as PDF</button></section>
 				
-				<section class="about sect">
+				<section *ngFor="let i of Data.personal"  class="about sect">
 					<h2 class="right-title">About Me</h2>
 					<p class="para">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam molestias facilis ullam dolorum, reprehenderit dolorem accusantium sit quo 
-						dolore nostrum assumenda obcaecati animi commodi nobis labore exercitationem corporis esse eveniet optio laudantium molestiae maiores pariatur nisi cumque. 
-						Distinctio et, totam, dicta autem nostrum doloribus ipsam vel rerum, molestiae soluta laboriosam. <br>
-						<br>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto iusto porro suscipit. 
-						Nihil blanditiis cum voluptates odio recusandae deleniti, nulla repudiandae aliquam adipisci iusto reiciendis sequi labore quos ratione accusamus consectetur, 
-						libero ex assumenda pariatur commodi animi nobis, dolore id.
+						{{i.aboutMe}}
 					</p>
 				</section>
 	
 				<section class="experince sect">
 					<h2 class="right-title">Experience</h2>
-					<div class="timeline">
-						<div class="left-tl-content">
-							<h5 class="tl-title">Microsoft</h5>
-							<p class="para">2017 - 2019</p>
-						</div>
-						<div class="right-tl-content">
-							<div class="tl-content">
-								<h5 class="tl-title-2">Junior Developer</h5>
-								<p class="para">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias cupiditate vitae 
-									voluptatem deleniti, 
-									laboriosam odio nobis quae fugit facilis quo.
-								</p>
+
+					<ul *ngFor="let i of Data.workexp;">
+						<li>
+							<div class="timeline">
+								<div class="left-tl-content">
+									<h5 class="tl-title">{{i.companyName}}</h5>
+									<p class="para">{{i.startDate1}}   --- {{i.endDate1}}</p>
+								</div>
+								<div class="right-tl-content">
+									<div class="tl-content">
+										<h5 class="tl-title-2">{{i.jobProfile}}</h5>
+										<p id="para" class="para">
+											{{i.jobDescription}}
+										</p>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-					<div class="timeline">
-						<div class="left-tl-content">
-							<h5 class="tl-title">Google Inc</h5>
-							<p class="para">2019 - 2020</p>
-						</div>
-						<div class="right-tl-content">
-							<div class="tl-content">
-								<h5 class="tl-title-2">Lead Web developer</h5>
-								<p class="para">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias cupiditate vitae 
-									voluptatem deleniti, 
-									laboriosam odio nobis quae fugit facilis quo.
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="timeline">
-						<div class="left-tl-content">
-							<h5 class="tl-title">Google Inc</h5>
-							<p class="para">2019 - 2020</p>
-						</div>
-						<div class="right-tl-content">
-							<div class="tl-content">
-								<h5 class="tl-title-2">Lead Web developer</h5>
-								<p class="para">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias cupiditate vitae 
-									voluptatem deleniti, 
-									laboriosam odio nobis quae fugit facilis quo.
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="timeline">
-						<div class="left-tl-content">
-							<h5 class="tl-title">Apple</h5>
-							<p class="para">2020 - Present</p>
-						</div>
-						<div class="right-tl-content">
-							<div class="tl-content">
-								<h5 class="tl-title-2">Senior Developer</h5>
-								<p class="para">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias cupiditate vitae 
-									voluptatem deleniti, 
-									laboriosam odio nobis quae fugit facilis quo.
-								</p>
-							</div>
-						</div>
-					</div>
+						</li>
+					</ul>
+
+
+
+					
+					
+					
+					
 				</section>
 				<section class="education sect">
-					<h2 class="right-title">education</h2>
-					<div class="timeline">
-						<div class="left-tl-content">
-							<h5 class="tl-title">Cheney School</h5>
-							<p class="para">2015 - 2016</p>
-						</div>
-						<div class="right-tl-content">
-							<div class="tl-content">
-								<h5 class="tl-title-2">Gcse's</h5>
-								<p class="para">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias cupiditate vitae 
-									voluptatem deleniti, 
-									laboriosam odio nobis quae fugit facilis quo.
-								</p>
+					<h2 class="right-title">Education</h2>
+
+					<ul *ngFor="let i of Data.educational;">
+						<li>
+							<div class="timeline">
+								<div class="left-tl-content">
+									<h5 class="tl-title">{{i.institution}}</h5>
+									<p class="para">{{i.startDate}} --- {{i.endDate}}</p>
+								</div>
+								<div class="right-tl-content">
+									<div class="tl-content">
+										<h5 class="tl-title-2">{{i.qualification}}</h5>
+										<h3>{{i.course}}</h3>
+										<p id="para"class="para">
+											{{i.courseDetails}}
+										</p>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-					<div class="timeline">
-						<div class="left-tl-content">
-							<h5 class="tl-title">Cheney School</h5>
-							<p class="para">2016 - 2018</p>
-						</div>
-						<div class="right-tl-content">
-							<div class="tl-content">
-								<h5 class="tl-title-2">A - Levels</h5>
-								<p class="para">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias cupiditate vitae 
-									voluptatem deleniti, 
-									laboriosam odio nobis quae fugit facilis quo.
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="timeline">
-						<div class="left-tl-content">
-							<h5 class="tl-title">University of Sussex</h5>
-							<p class="para">2018 - Present</p>
-						</div>
-						<div class="right-tl-content">
-							<div class="tl-content">
-								<h5 class="tl-title-2">Computer Science</h5>
-								<p class="para">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias cupiditate vitae 
-									voluptatem deleniti, 
-									laboriosam odio nobis quae fugit facilis quo.
-								</p>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section class="awards sect">
+						</li>
+					</ul>
+
+
+									</section>
+				<!-- <section class="awards sect">
 					<h2 class="right-title">Awards</h2>
 					<div class="timeline">
 						<div class="left-tl-content">
@@ -318,7 +242,7 @@
 							</div>
 						</div>
 					</div>
-				</section>
+				</section> -->
 			</div>
 		</section>
 	</main>
@@ -327,3 +251,4 @@
 
 
 
+</div>

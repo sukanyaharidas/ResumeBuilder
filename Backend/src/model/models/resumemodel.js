@@ -4,7 +4,7 @@ const Schema=mongoose.Schema;
 
 const resumedetails = new Schema({
 
-    personal:[{  
+        personal:[{
             name: String,
             role: String,
             aboutMe: String,
@@ -25,9 +25,9 @@ const resumedetails = new Schema({
         }],
         workexp:[{
             jobProfile:String,
-            startDate: String,
-            companName: String,
-            endDate: String,
+            startDate1: String,
+            companyName: String,
+            endDate1: String,
             jobDescription: String,
         }],   
         skills:  [{

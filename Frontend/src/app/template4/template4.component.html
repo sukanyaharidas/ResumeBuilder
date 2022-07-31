@@ -1,11 +1,30 @@
-<div id="doc2" class="yui-t7">
+
+   <div class="cont">
+   
+   <div class="buttons">
+        <li class="nav-item dropdown">
+       <a class="nav-link dropdown-toggle scrollto" id="navbarDropdown" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+         Download
+       </a>
+       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+         <li><a class="dropdown-item"(click)="downloadpdf()"> Download as PDF</a></li>
+         <li><a class="dropdown-item" >Download as Excel</a></li>
+         <li><a class="dropdown-item" >Download as PDF</a></li>
+
+       </ul>
+       <a class="nav-item scrollto active" class="btn">Save</a>
+     </li>
+</div>
+
+
+<div id="doc2" class="yui-t7"   id="contentToConvert">
     <div id="inner">
     
         <div id="hd">
             <div class="yui-gc">
                 <div class="yui-u first">
-                    <h1>Jonathan Doe</h1>
-                    <h2>Web Designer, Director</h2>
+                    <h1></h1>
+                    <h2></h2>
                 </div>
 
                 <div class="yui-u">
@@ -24,7 +43,7 @@
 
                     <div class="yui-gf">
                         <div class="yui-u first">
-                            <h2>Profile</h2>
+                            <h2>{{Data.courseDetails}}</h2>
                         </div>
                         <div class="yui-u">
                             <p class="enlarge">
@@ -145,3 +164,4 @@
 
 
 </div><!--// doc -->
+</div>

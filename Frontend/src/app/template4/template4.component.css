@@ -1,4 +1,19 @@
 
+.cont{
+    margin-top: 50px;
+}
+.buttons{
+    text-align: right;
+    
+}
+.buttons a{
+    margin-left: 5px;
+    padding: 5px 5px;
+    border: 1px;
+    background: rgb(90, 107, 100);
+    color: white;
+}
+
 .msg { padding: 10px; background: #222; position: relative; }
 .msg h1 { color: #fff;  }
 .msg a { margin-left: 20px; background: #408814; color: white; padding: 4px 8px; text-decoration: none; }

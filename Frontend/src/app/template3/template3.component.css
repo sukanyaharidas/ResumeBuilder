@@ -1,3 +1,18 @@
+.cont{
+  margin-top: 50px;
+}
+
+.buttons{
+  text-align: right;
+  
+}
+.buttons a{
+  margin-left: 5px;
+  padding: 5px 5px;
+  border: 1px;
+  background: rgb(90, 107, 100);
+  color: white;
+}
 
 .timeline {
     border-left: 2px solid #E6E9ED;

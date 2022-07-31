@@ -9,6 +9,20 @@
 body{
     background-color: #94D9EA;
 }
+.cont{
+    margin-top: 50px;
+}
+.buttons{
+    text-align: right;
+    
+}
+.buttons a{
+    margin-left: 5px;
+    padding: 5px 5px;
+    border: 1px;
+    background: rgb(90, 107, 100);
+    color: white;
+}
 
 .main-content{
     min-height: 100vh;
@@ -16,6 +30,7 @@ body{
     margin: 2rem auto;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+
 }
 
 .left-section{
@@ -288,4 +303,9 @@ body{
 .btntemp1 :hover{
     border-style: double;
     background-color: blueviolet;
+}
+
+#para{
+    max-width:300px;
+        word-wrap:break-word;
 }
