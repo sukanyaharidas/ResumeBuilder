@@ -1,0 +1,145 @@
+<!-- Wrapper -->
+<body>
+  
+    <section>
+      
+      <div class="thumb" data-id="girls">
+        <a routerLink="/_temp1">
+          <img src="assets/img/temp11.PNG" alt="photo">
+        </a>
+      </div>
+      <div class="thumb" data-id="girls">
+        <a routerLink="/_temp2">
+          <img src="assets/img/template222.png" alt="photo">
+        </a>
+      </div>
+      <div class="thumb" data-id="girls">
+        <a routerLink="/_temp3">
+          <img src="assets/img/template333.png" alt="photo">
+        </a>
+      </div>
+      <div class="thumb" data-id="girls">
+        <a routerLink="/_temp4">
+          <img src="assets/img/template444.png" alt="photo">
+        </a>
+      </div>
+    </section>
+  
+  <script>
+  const buttons = document.querySelectorAll('li');
+  const section = document.querySelectorAll('.thumb');
+  
+  let values = "all";
+  filter(values);
+  
+  function filter(values) {
+      section.forEach(show => {
+          show.style.display = "none";
+          if (show.getAttribute("data-id") === values || values === "all") {
+              show.style.display = "block";
+          }
+      });
+  }
+  buttons.forEach(item => {
+      item.addEventListener('click', () => {
+          buttons.forEach(item => {
+              item.className = "";
+          });
+          item.className = "active";
+  
+          // Show images
+          let values = item.textContent;
+          filter(values);
+      });
+  });
+  
+  </script>
+  </body>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- 
+  
+    <div class='container'>
+  
+      <div class='pics_in_a_row'>
+        <div class='img1'>
+          <a routerLink="/_temp1">
+              <img src="assets/img/temp11.PNG">
+          </a>
+        </div>
+        <div class='img2'>
+          <a routerLink="/_temp2">
+              <img src="assets/img/temp11.PNG">
+          </a>
+        </div>
+        <div class='img3'>
+          <a routerLink="/_temp3">
+              <img src="assets/img/temp11.PNG">
+          </a>
+       </div>
+      <div class='img4'>
+          <a routerLink="/_temp4">
+              <img src="assets/img/temp11.PNG">
+          </a>
+      </div>
+      
+      
+      <!-- <div class='pics_in_a_row'>
+          <div class='img3'>
+              <a routerLink="/_temp3">
+                  <img src="assets/img/temp11.PNG">
+              </a>
+           </div>
+          <div class='img4'>
+              <a routerLink="/_temp4">
+                  <img src="assets/img/temp11.PNG">
+              </a>
+        </div> -->
+    
+    <!-- </div> -->
+  
+  
+  
+  
+      
+      <!-- <div class='pics_in_a_row'>
+        <div class='img4'>
+          <img src='http://blimpage.com/pants/codepen/mm4.jpg'>
+        </div>
+        <div class='img5'>
+          <img src='http://blimpage.com/pants/codepen/mm5.jpg'>
+        </div>
+      </div>
+    
+  
+      <div class='pics_in_a_row'>
+        <div class='img1'>
+          <a href='https://www.guitarnerd.com.au/2011/07/fender-musicmaster-bass/'><img src='http://blimpage.com/pants/codepen/mm1.jpg'></a>
+        </div>
+        <div class='img2'>
+          <a href='http://www.sheltonsguitars.com/2009/12-9-09/squier-musicmaster-bass-12-9-07.html'><img src='http://blimpage.com/pants/codepen/mm2.jpg'></a>
+        </div>
+        <div class='img3'>
+          <a href='http://www.seymourduncan.com/forum/showthread.php?73445-Hot-Rails-as-a-single-for-Fender-Musicmaster-bass-guitar'><img src='http://blimpage.com/pants/codepen/mm3.jpg'></a>
+        </div>
+        <div class='img4'>
+          <a href='http://imageevent.com/firstflight/fendermusicmasterbass'><img src='http://blimpage.com/pants/codepen/mm4.jpg'></a>
+        </div>
+        <div class='img5'>
+          <a href='https://www.muffwiggler.com/forum/viewtopic.php?p=1810400'><img src='http://blimpage.com/pants/codepen/mm5.jpg'></a>
+        </div>
+      </div>
+      
+    </div>
+     --> 

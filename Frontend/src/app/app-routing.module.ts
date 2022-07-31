@@ -15,21 +15,23 @@ import { Template3Component } from './template3/template3.component';
 import { Template4Component } from './template4/template4.component';
 import { UserUIComponent } from './user-ui/user-ui.component';
 import { AuthGuard } from './auth.guard';
+import { MyProjectComponent } from './my-project/my-project.component';
 
 const routes: Routes = [{path:"",component: HomeComponent},
                         {path:"\login",component: LoginComponent},
                         {path:"\signup",component: SignupComponent},
-                        {path:"\temp1",component: Template1Component},
+                        {path:"\_temp1",component: Template1Component},
                         {path:"\data",component: Form1Component,canActivate:[AuthGuard]},
-                        {path:"\temp2",component:Template2Component,canActivate:[AuthGuard]},
-                        {path:"\temp3",component:Template3Component,canActivate:[AuthGuard]},
-                        {path:"\temp4",component:Template4Component,canActivate:[AuthGuard]},
+                        {path:"\_temp2",component:Template2Component,canActivate:[AuthGuard]},
+                        {path:"\_temp3",component:Template3Component,canActivate:[AuthGuard]},
+                        {path:"\_temp4",component:Template4Component,canActivate:[AuthGuard]},
                         {path:"\Choose_Template",component:ChooseTemmplateComponent,canActivate:[AuthGuard]},
                         {path:"\home_user",component:UserUIComponent,canActivate:[AuthGuard]},
                         {path:"\Accountsettings",component:AccountsettingsComponent,canActivate:[AuthGuard]},
                         {path:"\admin",component:AdminLoginComponent},
                         {path:"\home_admin",component:AdminUIComponent,canActivate:[AuthGuard]},
-                        {path:"\choosetemp",component:ChooseTemmplateComponent,canActivate:[AuthGuard]}
+                        {path:"\choosetemp",component:ChooseTemmplateComponent,canActivate:[AuthGuard]},
+                        {path:"\myresumes", component:MyProjectComponent}
                         // {path:"\previewResume",
                         //  component:ResumePreviewComponent,
                         // children:[
