@@ -15,7 +15,7 @@ export class Template1Component implements OnInit {
    }
 
    
-   name:String='Sukanya';
+   
   constructor(private resumeservice:ResumeserviceService) {}
   ngOnInit() {
      console.log(this.Data);

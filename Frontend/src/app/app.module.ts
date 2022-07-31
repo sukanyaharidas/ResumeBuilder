@@ -39,6 +39,7 @@ import { AuthServiceService } from './auth-service.service';
 // import { ResumePreviewComponent } from './resume-preview/resume-preview.component';
 import { HttpInterceptor } from '@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { MyProjectComponent } from './my-project/my-project.component';
 import { EditDataComponent } from './edit-data/edit-data.component';
 
 @NgModule({
@@ -66,7 +67,8 @@ import { EditDataComponent } from './edit-data/edit-data.component';
     SidenavComponent,
     AccountsettingsComponent,
     AdminLoginComponent,
-    EditDataComponent
+    EditDataComponent,
+    MyProjectComponent
     // ResumePreviewComponent
   ],
   imports: [

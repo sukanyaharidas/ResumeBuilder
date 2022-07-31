@@ -20,7 +20,9 @@
       </li> -->
   
       <li *ngIf="userRole">
-        <a routerLink="/home_user" >
+        <a routerLink="/home_user" ></a></li>
+      <li *ngIf="auth.loggedIn() && userRole">
+        <a routerLink="/myresumes" >
           <i class='bx bx-folder'></i>
           <span class="links_name" >My Projects</span>
         </a>
