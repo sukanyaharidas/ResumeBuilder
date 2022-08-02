@@ -5,7 +5,7 @@ const path = require("path")
 const resumecred  = require('./src/model/models/resumemodel')
 const signup= require('./src/model/models/signupmodule')
 const jwt = require("jsonwebtoken");
-
+const multer = require('multer')
 
 const mongoose = require("mongoose")
 const dotenv = require("dotenv");
@@ -17,8 +17,17 @@ dotenv.config();
 app.use(cors());
 app.use(bodyparser.json());
 app.use(express.json({ urlencoded: true }));
-app.use(express.json());
-
+// app.use(express.json());
+app.use(express.json({ limit: "200mb" }));
+// const storage = multer.diskStorage({
+//   destination:(req,file,callback)=>{
+//     callback(null,'uploadedimages')
+//   },
+//   filename:(req,file,callback)=>{
+//     callback(null,Date.now()+path.extname(file.originalname))
+//   }
+// })
+// var upload = multer({storage:storage})
 
 
 function verifyToken(req,res,next){
@@ -50,7 +59,7 @@ mongoose.connect(db, {
 // requiring routes
 app.post('/insert', function (req, res) {
 
-  console.log('reqdata',req.body.data.personal.personalDetails)
+  console.log('req')
     
   var resumeinputs = {
  personal:req.body.data.personal.personalDetails,
@@ -59,7 +68,7 @@ app.post('/insert', function (req, res) {
  hobbies:req.body.data.hobbies.hobbyDetails,
  skills:req.body.data.skills.skillDetails
   }
-console.log(resumeinputs);
+// console.log(resumeinputs);
   var inputs = new resumecred(resumeinputs);
   inputs.save()
    res.send()
@@ -72,9 +81,24 @@ console.log(resumeinputs);
 app.get('/api/resdata',(req,res)=>{
   resumecred.find()
   .then((data)=>{
-      console.log(data)
+      // console.log(data)
       res.send(data)
   })
+})
+app.get('/api/displayusercred',(req,res)=>{
+  signup.find()
+  .then((data1)=>{
+    res.send(data1)
+  })
+})
+
+app.delete('/api/deleteusercred/:id',(req,res)=>{
+id=req.params.id
+signup.findByIdAndRemove({"_id":id})
+.then(()=>{
+  console.log('deleted');
+  res.send()
+})
 })
 
 

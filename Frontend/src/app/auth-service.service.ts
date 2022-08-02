@@ -47,6 +47,13 @@ export class AuthServiceService {
       this.Userrole=true;
       this.Adminrole=false;
     }
+
+    getusercred(){
+      return this.http.get('http://localhost:4000/api/displayusercred')
+    }
+    deleteusercred(id:any){
+      return this.http.delete('http://localhost:4000/api/deleteusercred/'+id)
+    }
 // function subscribe(arg0: (data: any) => void) {
 //   throw new Error('Function not implemented.');
 // }

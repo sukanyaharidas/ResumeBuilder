@@ -64,6 +64,16 @@
   
   
       </li>
+      <li *ngIf="auth.loggedIn() && auth.Adminrole">
+        <a routerLink="/manageuser">
+          <i class='bx bx-user'></i>
+          <span class="links_name">Manage UserCredentials</span>
+        </a>
+        <!-- <span class="tooltip">Account</span> -->
+  
+  
+      </li>
+
       <!-- <li>
         <a href="#" >
           <i class='bx bx-trash'></i>

@@ -39,6 +39,7 @@ import { AuthServiceService } from './auth-service.service';
 // import { ResumePreviewComponent } from './resume-preview/resume-preview.component';
 import { HttpInterceptor } from '@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { ManageUsercredentialsComponent } from './manage-usercredentials/manage-usercredentials.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { TokenInterceptorService } from './token-interceptor.service';
     SignupComponent,
     SidenavComponent,
     AccountsettingsComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    ManageUsercredentialsComponent
     // ResumePreviewComponent
   ],
   imports: [

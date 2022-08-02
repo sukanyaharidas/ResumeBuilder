@@ -4,6 +4,7 @@ import { Validators } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
 import { VERSION, ViewChild, ElementRef } from '@angular/core';
 
+import { ResumeserviceService } from 'src/app/resumeservice.service';
 @Component({
   selector: 'app-personal-details',
   templateUrl: './personal-details.component.html',
@@ -28,7 +29,7 @@ export class PersonalDetailsComponent {
 
 @Output()
 public deletePersonalDetailsEvent:EventEmitter<number>=new EventEmitter<number>();
-  constructor() { }
+  constructor( private resumeservice:ResumeserviceService) { }
 
   static addPersonalDetails():FormGroup{
     return new FormGroup({
@@ -43,37 +44,55 @@ public deletePersonalDetailsEvent:EventEmitter<number>=new EventEmitter<number>(
       role: new FormControl('', Validators.required)
     })
   }
-
+  // this._student.studentRegister({ data: this.data, url: this.url })
 
   // public deletePersonalDetails(index:number):void{
   //   this.deletePersonalDetailsEvent.next(index);
   // }
 
-  uploadFileEvt(imgFile: any) {
-    if (imgFile.target.files) {
-      this.fileAttr = '';
-      Array.from(imgFile.target.files).forEach((file: any) => {
-        this.fileAttr += file.name ;
-      });
+uploadFileEvt(event: any) {
 
-      // HTML5 FileReader API
-      let reader = new FileReader();
-      reader.onload = (e: any) => {
-        let image = new Image();
-        image.src = e.target.result;
-        image.onload = rs => {
-          let imgBase64Path = e.target.result;
-          // console.log(imgBase64Path);
-          this.dataimage = imgBase64Path;
-        };
-      };
-      reader.readAsDataURL(imgFile.target.files[0])
+  if (!event.target.files[0] || event.target.files[0].length === 0) {
+    return
+  }
+  let mimeType = event.target.files[0].type;
+  if (mimeType.match(/image\/*/) == null) {
+    return
+  }
+  let reader = new FileReader();
+  reader.readAsDataURL(event.target.files[0]);
+  reader.onload = (_event) => {
+    this.dataimage = reader.result
+    console.log(this.dataimage)
+
+  this.resumeservice.sendprofileimage(this.dataimage)
+  }
+
+
+    // if (imgFile.target.files) {
+    //   this.fileAttr = '';
+    //   Array.from(imgFile.target.files).forEach((file: any) => {
+    //     this.fileAttr += file.name ;
+    //   });
+
+    //   // HTML5 FileReader API
+    //   let reader = new FileReader();
+    //   reader.onload = (e: any) => {
+    //     let image = new Image();
+    //     image.src = e.target.result;
+    //     image.onload = rs => {
+    //       let imgBase64Path = e.target.result;
+    //       // console.log(imgBase64Path);
+    //       this.dataimage = imgBase64Path;
+    //     };
+    //   };
+    //   reader.readAsDataURL(imgFile.target.files[0])
       
-      // Reset if duplicate image uploaded again
-      this.fileInput.nativeElement.value = "";
-    } else {
-      this.fileAttr = '';
-    }
+    //   // Reset if duplicate image uploaded again
+    //   this.fileInput.nativeElement.value = "";
+    // } else {
+    //   this.fileAttr = '';
+    // }
   }
 
 

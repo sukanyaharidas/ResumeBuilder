@@ -65,5 +65,11 @@ getdata(){
   return this.http.get('http://localhost:4000/api/resdata')
   
 }
+sendprofileimage(dataimage:any){
+  // console.log('imagess',dataimage)
+  return this.http.post('http://localhost:4000/image',{dataimage})
+  .subscribe((dataimage))
+  
+}
 
 }

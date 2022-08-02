@@ -13,6 +13,7 @@ import { Template1Component } from './template1/template1.component';
 import { Template2Component } from './template2/template2.component';
 import { Template3Component } from './template3/template3.component';
 import { Template4Component } from './template4/template4.component';
+import { ManageUsercredentialsComponent } from './manage-usercredentials/manage-usercredentials.component';
 import { UserUIComponent } from './user-ui/user-ui.component';
 import { AuthGuard } from './auth.guard';
 
@@ -29,7 +30,8 @@ const routes: Routes = [{path:"",component: HomeComponent},
                         {path:"\Accountsettings",component:AccountsettingsComponent,canActivate:[AuthGuard]},
                         {path:"\admin",component:AdminLoginComponent},
                         {path:"\home_admin",component:AdminUIComponent,canActivate:[AuthGuard]},
-                        {path:"\choosetemp",component:ChooseTemmplateComponent,canActivate:[AuthGuard]}
+                        {path:"\choosetemp",component:ChooseTemmplateComponent,canActivate:[AuthGuard]},
+                        {path:"\manageuser",component:ManageUsercredentialsComponent,canActivate:[AuthGuard]}
                         // {path:"\previewResume",
                         //  component:ResumePreviewComponent,
                         // children:[
