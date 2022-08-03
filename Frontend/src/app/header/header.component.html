@@ -10,7 +10,9 @@
           <li *ngIf="!auth.loggedIn()" class="nav-item"><a class="nav-link scrollto active" href="">HOME</a></li>
           <li *ngIf="!auth.loggedIn()" class="nav-item"><a class="nav-link scrollto active" routerLink="/login"  >LOGIN</a></li>
           <li *ngIf="!auth.loggedIn()" class="nav-item"><a class="nav-link scrollto active" routerLink="/signup">SIGNUP</a></li>
-          <li  *ngIf="auth.loggedIn()" class="nav-item"><a class="nav-link scrollto active" (click)="logoutUser()"  routerLink="/signup">LOGOUT</a></li>
+          <li  *ngIf="auth.loggedIn()" class="nav-item"><a class="nav-link scrollto active" (click)="logoutUser()"  >LOGOUT</a></li>
+
+
 
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle scrollto" id="navbarDropdown" class="btn" data-bs-toggle="dropdown" aria-expanded="false">

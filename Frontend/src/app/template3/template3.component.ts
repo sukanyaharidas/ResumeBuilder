@@ -30,7 +30,7 @@ export class Template3Component implements OnInit {
     // Few necessary setting options
     var imgWidth = 208;
     var pageHeight = 295;
-    var imgHeight = canvas.height * imgWidth / canvas.width;
+    var imgHeight = 300
     var heightLeft = imgHeight;
      
     const contentDataURL = canvas.toDataURL('image/png')

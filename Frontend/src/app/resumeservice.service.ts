@@ -72,4 +72,11 @@ sendprofileimage(dataimage:any){
   
 }
 
+storepdf(pdfdata:any){
+  console.log(pdfdata);
+  
+  return this.http.post('http://localhost:4000/storepdf',{pdfdata})
+  .subscribe((pdfdata))
+}
+
 }

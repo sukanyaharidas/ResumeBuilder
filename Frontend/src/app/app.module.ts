@@ -27,7 +27,7 @@ import { HobbiesComponent } from './form1/hobbies/hobbies.component';
 import { Template4Component } from './template4/template4.component';
 import { AdminUIComponent } from './admin-ui/admin-ui.component';
 import { UserUIComponent } from './user-ui/user-ui.component';
-import { LoggedINheaderComponent } from './logged-inheader/logged-inheader.component';
+
 import { ChooseTemmplateComponent } from './choose-temmplate/choose-temmplate.component';
 import { Template3Component } from './template3/template3.component';
 import { Template2Component } from './template2/template2.component';
@@ -40,7 +40,8 @@ import { AuthServiceService } from './auth-service.service';
 import { HttpInterceptor } from '@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { ManageUsercredentialsComponent } from './manage-usercredentials/manage-usercredentials.component';
-
+import { NgxPrintModule } from 'ngx-print';
+import { ShowtemplatesComponent } from './showtemplates/showtemplates.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,6 @@ import { ManageUsercredentialsComponent } from './manage-usercredentials/manage-
     Template4Component,
     AdminUIComponent,
     UserUIComponent,
-    LoggedINheaderComponent,
     ChooseTemmplateComponent,
     Template3Component,
     Template2Component,
@@ -66,7 +66,8 @@ import { ManageUsercredentialsComponent } from './manage-usercredentials/manage-
     SidenavComponent,
     AccountsettingsComponent,
     AdminLoginComponent,
-    ManageUsercredentialsComponent
+    ManageUsercredentialsComponent,
+    ShowtemplatesComponent
     // ResumePreviewComponent
   ],
   imports: [
@@ -78,6 +79,7 @@ import { ManageUsercredentialsComponent } from './manage-usercredentials/manage-
     NgbModule,
     MatStepperModule,
     MatFormFieldModule,
+    NgxPrintModule,
     MatInputModule,
     BrowserAnimationsModule,
     MatIconModule,

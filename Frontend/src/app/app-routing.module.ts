@@ -16,6 +16,7 @@ import { Template4Component } from './template4/template4.component';
 import { ManageUsercredentialsComponent } from './manage-usercredentials/manage-usercredentials.component';
 import { UserUIComponent } from './user-ui/user-ui.component';
 import { AuthGuard } from './auth.guard';
+import { ShowtemplatesComponent } from './showtemplates/showtemplates.component';
 
 const routes: Routes = [{path:"",component: HomeComponent},
                         {path:"\login",component: LoginComponent},
@@ -31,7 +32,8 @@ const routes: Routes = [{path:"",component: HomeComponent},
                         {path:"\admin",component:AdminLoginComponent},
                         {path:"\home_admin",component:AdminUIComponent,canActivate:[AuthGuard]},
                         {path:"\choosetemp",component:ChooseTemmplateComponent,canActivate:[AuthGuard]},
-                        {path:"\manageuser",component:ManageUsercredentialsComponent,canActivate:[AuthGuard]}
+                        {path:"\manageuser",component:ManageUsercredentialsComponent,canActivate:[AuthGuard]},
+                        {path:"\showtemp",component:ShowtemplatesComponent}
                         // {path:"\previewResume",
                         //  component:ResumePreviewComponent,
                         // children:[

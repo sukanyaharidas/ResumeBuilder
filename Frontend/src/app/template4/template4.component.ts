@@ -29,7 +29,7 @@ export class Template4Component implements OnInit {
     // Few necessary setting options
     var imgWidth = 208;
     var pageHeight = 295;
-    var imgHeight = canvas.height * imgWidth / canvas.width;
+    var imgHeight = 310;
     var heightLeft = imgHeight;
      
     const contentDataURL = canvas.toDataURL('image/png')

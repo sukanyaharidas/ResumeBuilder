@@ -54,7 +54,17 @@ export class AuthServiceService {
     deleteusercred(id:any){
       return this.http.delete('http://localhost:4000/api/deleteusercred/'+id)
     }
-// function subscribe(arg0: (data: any) => void) {
-//   throw new Error('Function not implemented.');
-// }
+
+    getadmindata(){
+      return this.http.get('http://localhost:4000/getadmindata')
+    }
+    updateadminmail(admindata:any){
+      console.log(admindata);
+      
+      return this.http.put('http://localhost:4000/updateadminmail',admindata)
+      .subscribe(adminmail=>{
+        console.log(admindata);
+        
+      })
+    }
 }

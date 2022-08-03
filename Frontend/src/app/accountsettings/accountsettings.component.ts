@@ -8,45 +8,40 @@ import { AuthServiceService } from '../auth-service.service';
 })
 export class AccountsettingsComponent implements OnInit {
   public inactive1:boolean = true;
-  public inactive2:boolean = true;
  public showme:boolean=false
  public showme2:boolean=false
 
+public inactive2:boolean=true
+public showme3:boolean=false
+ admindata={
 
-
- userData={
-  fname:'',
-  emailid:'',
+  email:'',
   password:''
  }
   constructor(private authservice:AuthServiceService) { }
 
   ngOnInit(): void {
     
-  let userdata = localStorage.getItem('edituserdata');
-  console.log(userdata);
-  this.authservice.getuserdata(userdata).subscribe((data)=>{
-    this.userData=JSON.parse(JSON.stringify(data))
+    this.authservice.getadmindata().subscribe((admindata:any)=>{
+      this.admindata= JSON.parse(JSON.stringify(admindata))
+      console.log(this.admindata);
   })
   
   }
 
-  changename(){
+  changemail(){
     this.inactive1 = !(this.inactive1);
     this.showme=!this.showme
   }
 
-  changemail(){
-    this.inactive2= !(this.inactive2)
+  changepwd(){
+ 
     this.showme2=!this.showme2
   }
-savename(){
-  this.showme=!this.showme
-  this.inactive1 = !(this.inactive1);
-}
-savemail(){
-  this.inactive2= !(this.inactive2)
-  this.showme2=!this.showme2
-}
+  editadminmail(){
+    this.authservice.updateadminmail(this.admindata);
+  }
+
+newpwd(){}
 
 }

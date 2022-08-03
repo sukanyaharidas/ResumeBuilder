@@ -44,7 +44,7 @@ public deletePersonalDetailsEvent:EventEmitter<number>=new EventEmitter<number>(
       role: new FormControl('', Validators.required)
     })
   }
-  // this._student.studentRegister({ data: this.data, url: this.url })
+
 
   // public deletePersonalDetails(index:number):void{
   //   this.deletePersonalDetailsEvent.next(index);

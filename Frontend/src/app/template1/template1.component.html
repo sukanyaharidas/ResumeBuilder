@@ -1,16 +1,16 @@
 <div class="cont">
-    <div class="buttons">
+    <div class="buttons" id="haha">
 		     <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle scrollto" id="navbarDropdown" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle scrollto" (click)="downloadpdf()" id="navbarDropdown" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
               Download
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item"(click)="downloadpdf()" style="cursor: pointer;"> Download as PDF</a></li>
               <li><a class="dropdown-item"  style="cursor: pointer;">Download as Excel</a></li>
               <li><a class="dropdown-item" style="cursor: pointer;">Download as PDF</a></li>
 
-            </ul>
-			<a class="nav-item scrollto active" class="btn">Save</a>
+            </ul> -->
+			<a class="nav-item scrollto active" (click)="savepdf()" class="btn">Save</a>
           </li>
 		    
 	</div>

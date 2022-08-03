@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoggedINheaderComponent } from './logged-inheader.component';
+import { ShowtemplatesComponent } from './showtemplates.component';
 
-describe('LoggedINheaderComponent', () => {
-  let component: LoggedINheaderComponent;
-  let fixture: ComponentFixture<LoggedINheaderComponent>;
+describe('ShowtemplatesComponent', () => {
+  let component: ShowtemplatesComponent;
+  let fixture: ComponentFixture<ShowtemplatesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoggedINheaderComponent ]
+      declarations: [ ShowtemplatesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoggedINheaderComponent);
+    fixture = TestBed.createComponent(ShowtemplatesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

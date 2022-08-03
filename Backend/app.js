@@ -5,14 +5,14 @@ const path = require("path")
 const resumecred  = require('./src/model/models/resumemodel')
 const signup= require('./src/model/models/signupmodule')
 const jwt = require("jsonwebtoken");
-const multer = require('multer')
-
 const mongoose = require("mongoose")
 const dotenv = require("dotenv");
 const { sign } = require("crypto");
 const app = new express();
-const port = 4000;
 
+const multer = require ('multer')
+const {GridFsStorage}= require("multer-gridfs-storage")
+const port = 4000;
 dotenv.config();
 app.use(cors());
 app.use(bodyparser.json());
@@ -50,12 +50,15 @@ next()
 }
 const db ='mongodb+srv://Resume_Builder123:VMNrcM0q10uJES9j@resumebuilder.rjnsjcb.mongodb.net/?retryWrites=true&w=majority'
 // Databaseconnection
-mongoose.connect(db, {
+mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
 })
     .then(() => console.log("MongoDB Connected..."))
     .catch(err => console.log(err));
 
+
+
+    app.post("")
 // requiring routes
 app.post('/insert', function (req, res) {
 
@@ -75,9 +78,6 @@ app.post('/insert', function (req, res) {
     
 })
 
-// const resumerouter = require('./src/model/routes/resumeroute')
-
-// app.use('/api',resumerouter)
 app.get('/api/resdata',(req,res)=>{
   resumecred.find()
   .then((data)=>{
@@ -102,21 +102,6 @@ signup.findByIdAndRemove({"_id":id})
 })
 
 
-// app.post('/signup',function(req,res){
-//     console.log(req.body);
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
-//     console.log(req.body);
-//         var data={
-//                     fname:req.body.users.fname,
-//                     emailid:req.body.users.emailid,
-//                     password:req.body.users.password
-//                 };
-//     var _auth=new signup(data);
-//  _auth.save();
-    
-  
-// });
 
 
 app.post('/signup',function(req,res){
@@ -206,6 +191,7 @@ app.post('/login_admin', (req, res) => {
     }
   })
 
+  
 
 
 app.get('/', (req, res) => {
