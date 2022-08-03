@@ -10,16 +10,13 @@ mat-stepper{
   height: 600px;
   overflow:auto;
   /* background-color: rgb(246, 247, 253); */
-  background-image: url('/assets/img/job.jpg');
+  /* background-image: url('/assets/img/job.jpg'); */
   background-size: cover;
   margin-top: 2em;
   padding-top:3em;
 
 }
 
-/* #add{
-  background-color: rgb(161, 161, 180);
-} */
 
 .btn-success{
   background-color: green;

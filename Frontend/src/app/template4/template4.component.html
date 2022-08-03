@@ -1,6 +1,5 @@
 
-   <div class="cont">
-   
+   <div class="cont">  
    <div class="buttons">
         <li class="nav-item dropdown">
        <a class="nav-link dropdown-toggle scrollto" id="navbarDropdown" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
@@ -10,158 +9,95 @@
          <li><a class="dropdown-item"(click)="downloadpdf()"> Download as PDF</a></li>
          <li><a class="dropdown-item" >Download as Excel</a></li>
          <li><a class="dropdown-item" >Download as PDF</a></li>
-
        </ul>
-       <a class="nav-item scrollto active" class="btn">Save</a>
+       <a class="nav-item scrollto active" (click)="saveTemp()" class="btn">Save</a>
      </li>
 </div>
-
-
 <div id="doc2" class="yui-t7"   id="contentToConvert">
     <div id="inner">
-    
-        <div id="hd">
+           <div id="hd">
             <div class="yui-gc">
                 <div class="yui-u first">
                     <h1></h1>
                     <h2></h2>
                 </div>
-
                 <div class="yui-u">
-                    <div class="contact-info">
-                        <h3><a id="pdf" href="#">Download PDF</a></h3>
-                        <h3><a href="mailto:name@yourdomain.com">name@yourdomain.com</a></h3>
-                        <h3>(313) - 867-5309</h3>
-                    </div><!--// .contact-info -->
+                    <div  *ngFor="let i of Data.personal" class="contact-info">
+                        <h3 style="font-weight:900;font-size:30px">{{i.name}}</h3>
+                        <h3>{{i.email}}</h3>
+                        <h3>{{i.phone}}</h3>
+                    </div>
                 </div>
-            </div><!--// .yui-gc -->
-        </div><!--// hd -->
-
+            </div>
+        </div>
         <div id="bd">
             <div id="yui-main">
                 <div class="yui-b">
-
-                    <div class="yui-gf">
-                        <div class="yui-u first">
-                            <h2>{{Data.courseDetails}}</h2>
+                   <div class="row">
+                    <div class="col-7">
+                        <div class="yui-gf">
+                            <div *ngFor="let i of Data.personal" class="yui-u about">
+                                <p class="enlarge">{{i.aboutMe}}
+                                </p>
+                            </div>
                         </div>
-                        <div class="yui-u">
-                            <p class="enlarge">
-                                Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change. 
-                            </p>
+                    </div>
+                    <div class="col-5">
+                        <div class="yui-gf">
+                            <div *ngFor="let i of Data.personal" class="yui-u about">
+                                <h2>Address</h2>
+                                <p class="enlarge">{{i.address}}
+                                </p>
+                                <p class="enlarge">{{i.city}}
+                                </p>
+                            </div>
                         </div>
-                    </div><!--// .yui-gf -->
-
-                    <div class="yui-gf">
+                    </div>
+                   </div>
+                    <div   class="yui-gf">
                         <div class="yui-u first">
                             <h2>Skills</h2>
                         </div>
-                        <div class="yui-u">
-
-                                <div class="talent">
-                                    <h2>Web Design</h2>
-                                    <p>Assertively exploit wireless initiatives rather than synergistic core competencies.  </p>
-                                </div>
-
-                                <div class="talent">
-                                    <h2>Interface Design</h2>
-                                    <p>Credibly streamline mission-critical value with multifunctional functionalities.  </p>
-                                </div>
-
-                                <div class="talent">
-                                    <h2>Project Direction</h2>
-                                    <p>Proven ability to lead and manage a wide variety of design and development projects in team and independent situations.</p>
-                                </div>
-                        </div>
-                    </div><!--// .yui-gf -->
-
-                    <div class="yui-gf">
-                        <div class="yui-u first">
-                            <h2>Technifhjhhgcal</h2>
-                        </div>
-                        <div class="yui-u">
-                            <ul class="talent">
-                                <li>XHTML</li>
-                                <li>CSS</li>
-                                <li class="last">Javascript</li>
+                        <div *ngFor="let i of Data.skills;let k = index" class="yui-u">
+                            <ul *ngIf="k%2==0" class="talent">
+                                <li>{{i.skill}}</li>
                             </ul>
-
-                            <ul class="talent">
-                                <li>Jquery</li>
-                                <li>PHP</li>
-                                <li class="last">CVS / Subversion</li>
+                            <ul *ngIf="k%2!=0" class="talent">
+                                <li>{{i.skill}}</li>
                             </ul>
-
-                            <ul class="talent">
-                                <li>OS X</li>
-                                <li>Windows XP/Vista</li>
-                                <li class="last">Linux</li>
-                            </ul>
+                            
                         </div>
-                    </div><!--// .yui-gf-->
-
-                    <div class="yui-gf">
-    
+                    </div>
+                    <div class="yui-gf">   
                         <div class="yui-u first">
                             <h2>Experience</h2>
-                        </div><!--// .yui-u -->
-
-                        <div class="yui-u">
-
+                        </div>
+                        <div *ngFor="let i of Data.workexp" class="yui-u">
                             <div class="job">
-                                <h2>Facebook</h2>
-                                <h3>Senior Interface Designer</h3>
-                                <h4>2005-2007</h4>
-                                <p>Intrinsicly enable optimal core competencies through corporate relationships. Phosfluorescently implement worldwide vortals and client-focused imperatives. Conveniently initiate virtual paradigms and top-line convergence. </p>
+                                <h2>{{i.companyName}}</h2>
+                                <h3>{{i.jobProfile}}</h3>
+                                <h4>{{i.startDate1}}  ---  {{i.endDate1}}</h4>
+                                <p class="para">{{i.jobDescription}}</p>
                             </div>
-
-                            <div class="job">
-                                <h2>Apple Inc.</h2>
-                                <h3>Senior Interface Designer</h3>
-                                <h4>2005-2007</h4>
-                                <p>Progressively reconceptualize multifunctional "outside the box" thinking through inexpensive methods of empowerment. Compellingly morph extensive niche markets with mission-critical ideas. Phosfluorescently deliver bricks-and-clicks strategic theme areas rather than scalable benefits. </p>
-                            </div>
-
-                            <div class="job">
-                                <h2>Microsoft</h2>
-                                <h3>Principal and Creative Lead</h3>
-                                <h4>2004-2005</h4>
-                                <p>Intrinsicly transform flexible manufactured products without excellent intellectual capital. Energistically evisculate orthogonal architectures through covalent action items. Assertively incentivize sticky platforms without synergistic materials. </p>
-                            </div>
-
-
-                            <div class="job last">
-                                <h2>International Business Machines (IBM)</h2>
-                                <h3>Lead Web Designer</h3>
-                                <h4>2001-2004</h4>
-                                <p>Globally re-engineer cross-media schemas through viral methods of empowerment. Proactively grow long-term high-impact human capital and highly efficient innovation. Intrinsicly iterate excellent e-tailers with timely e-markets.</p>
-                            </div>
-
-                        </div><!--// .yui-u -->
-                    </div><!--// .yui-gf -->
-
-
-                    <div class="yui-gf last">
-                        <div class="yui-u first">
+                        </div>
+                    </div>
+                    <div class="yui-gf">
+                        <div  class="yui-u first">
                             <h2>Education</h2>
                         </div>
-                        <div class="yui-u">
-                            <h2>Indiana University - Bloomington, Indiana</h2>
-                            <h3>Dual Major, Economics and English &mdash; <strong>4.0 GPA</strong> </h3>
+                        <div *ngFor="let i of Data.educational" class="yui-u">
+                            <div class="job">
+                                <h2>{{i.course}}</h2>
+                                <h3>{{i.institution}}</h3>
+                                <h4>{{i.startDate}}  ---  {{i.endDate}}</h4>
+                                <p class="para">{{i.courseDetails}}</p>
+                            </div>
                         </div>
-                    </div><!--// .yui-gf -->
-
-
-                </div><!--// .yui-b -->
-            </div><!--// yui-main -->
-        </div><!--// bd -->
-
-        <div id="ft">
-            <p>Jonathahgfvhvhjvhvn Doe &mdash; <a href="mailto:name@yourdomain.com">name@yourdomain.com</a> &mdash; (313) - 867-5309</p>
-        </div><!--// footer -->
-
-    </div><!-- // inner -->
-
-
-</div><!--// doc -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button routerLink="/myresumes">Back to Dashboard</button>
 </div>

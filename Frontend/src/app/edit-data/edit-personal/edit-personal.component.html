@@ -1,0 +1,73 @@
+<form [formGroup]="childForm">
+    <h4>
+        Personal Details 
+    </h4>
+        <div *ngFor="let i of data.personal" class="container">
+            <div  class="row">
+              <div class="col-md">
+                <mat-form-field  appearance="fill">
+                  <mat-label> Your Name</mat-label>
+                  <input matInput placeholder="Last name, First name"  formControlName="name" [(ngModel)]="i.name" required>
+                </mat-form-field><br>
+                <mat-form-field appearance="fill">
+                  <mat-label>Current Role</mat-label>
+                  <input matInput placeholder="Current Role" formControlName="role" [(ngModel)]="i.role" required>              
+                </mat-form-field><br>
+                <mat-form-field appearance="fill">
+                  <mat-label>About Me</mat-label>
+                  <textarea name="" id=""  rows="10" matInput placeholder="About Me" [(ngModel)]="i.aboutMe" formControlName="aboutMe" required></textarea>    
+                </mat-form-field><br>       
+              </div>
+              <div class="col-md">
+                <mat-form-field appearance="fill">
+                  <mat-label>Email ID</mat-label>
+                <input matInput placeholder="Email ID" formControlName="email" [(ngModel)]="i.email" required>    
+                </mat-form-field><br>             
+                <mat-form-field appearance="fill">
+                  <mat-label>Phone</mat-label>
+                  <input matInput placeholder="Phone Number" formControlName="phone" [(ngModel)]="i.phone" required>              
+                </mat-form-field><br>
+                <mat-form-field>
+                  <div>
+                    <mat-toolbar>
+                      <!-- Display files names -->
+                      <input matInput placeholder="Upload your photo" formControlName="image" readonly name="name" />
+                    </mat-toolbar>
+                
+                    <!-- Fetch selected filed on change -->
+                    <input class="btn" type="file" #fileInput id="uploadFile"  formControlName="image" (change)="uploadFileEvt($event)" name="uploadFile" 
+                      accept="image/*" />
+                  </div>
+                  <div class="card-footer">
+                    <div><img src="{{dataimage}}"  width="300px"></div>
+                  </div>
+                </mat-form-field>            
+            </div>
+              <div class="col-md">
+                <mat-form-field appearance="fill">
+                  <mat-label>Address</mat-label>
+                  <input matInput placeholder="Address" [(ngModel)]="i.address" formControlName="address" required> 
+                </mat-form-field><br>
+                <mat-form-field appearance="fill">
+                  <mat-label>City</mat-label>
+                  <input matInput placeholder="Your City" [(ngModel)]="i.city" formControlName="city" required>              
+                </mat-form-field><br>
+                <mat-form-field appearance="fill">
+                  <mat-label>Pin Code</mat-label>
+                  <input matInput placeholder="Pin Code" [(ngModel)]="i.pin" formControlName="pin" required>             
+                </mat-form-field><br>  
+              </div>
+            </div>
+          </div>       
+    </form>
+    
+    
+    
+    
+      
+    
+      
+    
+    
+    
+    

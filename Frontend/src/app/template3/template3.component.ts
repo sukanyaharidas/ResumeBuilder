@@ -14,12 +14,15 @@ export class Template3Component implements OnInit {
   Data:any={
     
    }
+   imageUrl:String='';
+   id:any='temp3';
   constructor(private resumeservice:ResumeserviceService) {}
   ngOnInit() {
     
     this.resumeservice.getdata().subscribe((data:any)=>{
       this.Data = JSON.parse(JSON.stringify(data))
       console.log(this.Data);
+      this.imageUrl=data.profileImage;
     })
   }
 
@@ -42,5 +45,9 @@ export class Template3Component implements OnInit {
     });
     }
 
+    saveTemp(){
+      this.resumeservice.sendTempid(this.id);
+    }
+    
 
 }

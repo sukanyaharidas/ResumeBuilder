@@ -4,13 +4,11 @@
         <div class="col-xs-12">
           <p class="alert alert-success">
               <strong>Wrong Credentials</strong> 
-
           </p>
         </div>
       </div>
       <form class="login-form" [formGroup]="form" (ngSubmit)="loginUser()">
-        <span class="material-icons">lock</span>
-        
+        <span class="material-icons">lock</span>       
         <div>
           <input type="text" class="form-control" formControlName="username" [(ngModel)]="User.username" placeholder="Enter Username/Email" name="username" required/>
           <small class="error text-danger" *ngIf="form.get('username').invalid && form.get('username').touched">Username Required</small>

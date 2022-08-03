@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
-import { Cookie } from 'ng2-cookies/ng2-cookies';
+import { ResumeserviceService } from '../resumeservice.service';
 
 @Component({
   selector: 'app-user-ui',
@@ -10,13 +10,20 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
 export class UserUIComponent implements OnInit {
 
 
-  constructor(public _auth:AuthServiceService) { }
-
-  ngOnInit(): void {
-
-
-  
-
+  Data:any={
+    
   }
 
+  
+ constructor(private resumeservice:ResumeserviceService) {}
+ ngOnInit() {
+    console.log(this.Data);
+   this.resumeservice.getdata().subscribe((data:any)=>{
+     this.Data = JSON.parse(JSON.stringify(data))
+     console.log(this.Data);
+    
+
+   })
+
+ }
 }

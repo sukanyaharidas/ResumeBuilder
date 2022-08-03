@@ -5,8 +5,10 @@ const path = require("path")
 const resumecred  = require('./src/model/models/resumemodel')
 const signup= require('./src/model/models/signupmodule')
 const jwt = require("jsonwebtoken");
+const temp=require("./src/model/models/templatemodel")
 
 let currentUser='';
+let tempId=[];
 const mongoose = require("mongoose")
 const dotenv = require("dotenv");
 // const { sign } = require("crypto");
@@ -15,9 +17,8 @@ const port = 3000;
 
 dotenv.config();
 app.use(cors());
-app.use(bodyparser.json());
-app.use(express.json({ urlencoded: true }));
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000}));
 
 
 
@@ -42,6 +43,9 @@ app.use(express.json());
 // next();
 // }
 
+
+
+
 function verifyToken(req,res,next){
   if(!req.headers.Authorization){
     return res.status(401).send('unauthorizedrequest')
@@ -61,8 +65,7 @@ req.userId=payload.subject;
 
 next()
 }
-// const db ='mongodb+srv://Resume_Builder:resume123@cluster0.uq5mq.mongodb.net/Resume_Builder?retryWrites=true&w=majority'
-// Databaseconnection
+
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
 })
@@ -82,7 +85,8 @@ app.post('/insert', function (req, res) {
  workexp:req.body.data.workexp.workExperience,
  hobbies:req.body.data.hobbies.hobbyDetails,
  skills:req.body.data.skills.skillDetails,
-userid:currentUser
+userid:currentUser,
+profileImage:imageUrl
   }
 
   resumecred.findOneAndUpdate({userid:currentUser},
@@ -91,7 +95,8 @@ userid:currentUser
                               workexp:req.body.data.workexp.workExperience,
                               hobbies:req.body.data.hobbies.hobbyDetails,
                               skills:req.body.data.skills.skillDetails,
-                              userid:currentUser }},
+                              userid:currentUser,
+                              profileImage:imageUrl }},
                               function(err,doc){
                                       if(!doc){
                                         var inputs = new resumecred(resumeinputs);
@@ -101,27 +106,11 @@ userid:currentUser
                                       }   } )
 
 
-  // var inputs = new resumecred(resumeinputs);
-  // inputs.save()
+                                      
   
 })
 
-// const resumerouter = require('./src/model/routes/resumeroute')
 
-// app.use('/api',resumerouter)
-// app.get('/api/resdata',(req,res)=>{
-//   resumecred.findOne({userid:currentUser},(err,data)=>{
-//     if(!data){
-//       console.log("error is",err);
-//       res.status(401).send();
-//     }
-//     else{
-//       console.log(data)
-//       res.send(data)
-//     }
-//   })
- 
-// })
 
 app.get('/resdata', (req,res)=>{
 
@@ -142,22 +131,140 @@ app.get('/resdata', (req,res)=>{
 
 })
 
-// app.post('/signup',function(req,res){
-//     console.log(req.body);
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
-//     console.log(req.body);
-//         var data={
-//                     fname:req.body.users.fname,
-//                     emailid:req.body.users.emailid,
-//                     password:req.body.users.password
-//                 };
-//     var _auth=new signup(data);
-//  _auth.save();
-    
-  
-// });
 
+
+
+app.get('/editDetails', function(req,res){
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Method:GET,POST,PUT,DELETE");
+  resumecred
+    .findOne({ userid: currentUser },(err,data)=>{
+      if(!data){
+        console.log("error is",err);
+        res.status(401).send();
+      }
+      else{
+        
+        res.status(200).send(data);
+        console.log(data)
+      }
+    })
+
+})
+
+
+app.get('/getTemp', function(req,res){
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Method:GET,POST,PUT,DELETE");
+  temp
+    .findOne({ userid: currentUser },(err,data)=>{
+      if(!data){
+        console.log("error is",err);
+        res.status(401).send();
+      }
+      else{
+       
+        res.status(200).send(data);
+        console.log('temp is',data)
+      }
+    })
+
+})
+
+// app.post('/sendTempid',function(req,res){
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
+//   console.log(req.body.id);
+
+//   temp.findOne({userid: currentUser},(err,user)=>{
+//       if(!err){
+//         tempId.push(req.body.id);
+//         var data={
+//                     tempid:tempId,
+//                     userid:currentUser
+                   
+//                 };
+//                 var _temp=new temp(data);
+//              _temp.save();
+//         res.status(200).send(_temp);
+  
+//       }
+//       else{
+//         res.status(401).send();
+//       }
+//     })
+  
+//     }
+//  );
+
+ app.post('/sendTempid', function (req, res) {
+  console.log(currentUser);
+  // console.log('reqdata',req.body.data.personal.personalDetails)
+  tempId.push(req.body.id);
+  var data={
+              tempid:tempId,
+              userid:currentUser
+             
+          };
+
+  temp.findOneAndUpdate({userid:currentUser},
+                              {$set:{
+                                tempid:tempId,
+                                userid:currentUser
+                               
+                            }},
+                              function(err,doc){
+                                      if(!doc){
+                                        var inputs = new temp(data);
+                                        inputs.save();
+                                        console.log(data);
+                                        res.send(data);
+                                      }   } )
+  
+})
+
+
+//  app.post('/sendTempid',function(req,res){
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
+//   console.log(req.body.id);
+
+//   temp
+//   .findOne({userid: currentUser},(err,user)=>{
+//     if(user){
+//       tempid.push(req.body.id);
+//       var data={
+//         tempId:[tempid],
+//         userid:currentUser
+//       }
+//       var _temp=new temp(data);
+//       _temp.save();
+//       res.status(200).send();
+
+//     }
+//     else{
+//       res.status(401).send();
+//     }
+//   })
+    
+//     }
+//  );
+
+ let imageUrl='';
+ app.post('/imageUpload', function(req,res){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
+
+    console.log('image is', req.body.imageData);
+    imageUrl=req.body.imageData;
+    // resumecred.updateOne({userid:currentUser}, {$set:{
+    //   profileImage:req.body.imageData
+    //   }}, function(err,data){
+    //     if(data){
+    //       res.send(data);
+    //     }
+    //   })
+ })
 
 app.post('/signup',function(req,res){
     res.header("Access-Control-Allow-Origin", "*");
@@ -178,22 +285,7 @@ app.post('/signup',function(req,res){
              _auth.save();
         res.status(200).send();
       }
-    }) 
-    
-
-
-//     if(mail.value!=signup.emailid){
-//       var data={
-//         fname:req.body.users.fname,
-//         emailid:req.body.users.emailid,
-//         password:req.body.users.password
-//     };
-//     var _auth=new signup(data);
-//  _auth.save();
-//     }
-//     else{
-//       res.send('User already exist');
-//     }
+    })
   
 });
 
@@ -212,6 +304,7 @@ app.post('/login', (req, res) => {
         res.status(401).send();
       }
       else{
+        tempId=[];
         currentUser= req.body.authData.username;
         let payload = { subject: user.email + user.password };
             let token = jwt.sign(payload, "secretKey");

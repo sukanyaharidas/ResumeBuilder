@@ -19,7 +19,12 @@ import { Router } from '@angular/router';
 })
 export class EditDataComponent implements OnInit {
 
-  
+  editDetails:any={};
+  Data:any={
+    
+  }
+  currentTemp:any='';
+  imageUrl:String='';
   isLinear=false;
   public personalDetailsForm: FormGroup |any;
   public educationDetailsForm: FormGroup |any;
@@ -53,11 +58,25 @@ get personalDetailsArray(): FormArray{
   constructor(public resumeservice:ResumeserviceService,public router:Router){}
     
 ngOnInit(): void {
+
+
+  
   this.generatePersonalDetailsForm();
   this.generateEducationDetailsForm();
   this.generateWorkExperienceForm();
   this.generateSkillDetailsForm();
   this.generateHobbyDetailsForm();
+
+  console.log(this.Data);
+  this.resumeservice.getdata().subscribe((data:any)=>{
+    this.Data = JSON.parse(JSON.stringify(data))
+    console.log(this.Data);
+    this.imageUrl=data.profileImage;
+
+  })
+  
+  this.currentTemp=localStorage.getItem('temp');
+
 }
 
 
@@ -153,7 +172,7 @@ public addHobbyDetailsItem():void{
 // personaldetailsmodel = new personaldetailsmodel("","","","","","","","","")
 // skilldetailssmodel=new skilldetailsmodel("")
 // hobbydetailsmodel =new hobbydetailesmodel("")
- Details:any={
+ Details_update:any={
   personal:{},
   educational:[],
   workexp:[],
@@ -161,28 +180,28 @@ public addHobbyDetailsItem():void{
   hobbies:[]
  }
 
- public displaydata():void{
+ public updatedata():void{
 
-  this.Details.personal = this.personalDetailsForm.value;
-  this.Details.educational = this.educationDetailsForm.value;
-  this.Details.workexp = this.workExperienceDetailsForm.value;
-  this.Details.skills = this.skillsForm.value;
-  this.Details.hobbies = this.hobbiesForm.value;
+  this.Details_update.personal = this.personalDetailsForm.value;
+  this.Details_update.educational = this.educationDetailsForm.value;
+  this.Details_update.workexp = this.workExperienceDetailsForm.value;
+  this.Details_update.skills = this.skillsForm.value;
+  this.Details_update.hobbies = this.hobbiesForm.value;
 
-this.resumeservice.senddata(this.Details);
+this.resumeservice.senddata(this.Details_update);
 this.router.navigate(['/data_edit']);
 
-console.log(this.Details);
+const currentRoute = this.router.url;
 
-  // this.resumeservice.senddata(this.resumedata)
-  // console.log();
-  // console.log(this.personalDetailsForm.value);
-  // console.log(this.educationDetailsForm.value);
-  // console.log(this.workExperienceDetailsForm.value);
-  // console.log(this.skillsForm.value);
-  // console.log(this.hobbiesForm.value);
+this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+    this.router.navigate([currentRoute]); // navigate to same route
+}); 
+window.location.reload();
+
+
+
+
  }
 
-
-
+ 
 }

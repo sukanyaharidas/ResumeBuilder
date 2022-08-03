@@ -30,8 +30,7 @@ export class SkillsComponent implements OnInit {
       skill: new FormControl('', Validators.required)
     })
   }
-
-  
+ 
 public deleteSkillDetails(index:number):void{
   this.deleteSkillDetailsEvent.next(index);
 }

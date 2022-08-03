@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminUIComponent } from './admin-ui.component';
+import { EditHobbyComponent } from './edit-hobby.component';
 
-describe('AdminUIComponent', () => {
-  let component: AdminUIComponent;
-  let fixture: ComponentFixture<AdminUIComponent>;
+describe('EditHobbyComponent', () => {
+  let component: EditHobbyComponent;
+  let fixture: ComponentFixture<EditHobbyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminUIComponent ]
+      declarations: [ EditHobbyComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminUIComponent);
+    fixture = TestBed.createComponent(EditHobbyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

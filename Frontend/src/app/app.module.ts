@@ -25,9 +25,7 @@ import { WorkexperienceComponent } from './form1/workexperience/workexperience.c
 import { SkillsComponent } from './form1/skills/skills.component';
 import { HobbiesComponent } from './form1/hobbies/hobbies.component';
 import { Template4Component } from './template4/template4.component';
-import { AdminUIComponent } from './admin-ui/admin-ui.component';
 import { UserUIComponent } from './user-ui/user-ui.component';
-import { LoggedINheaderComponent } from './logged-inheader/logged-inheader.component';
 import { ChooseTemmplateComponent } from './choose-temmplate/choose-temmplate.component';
 import { Template3Component } from './template3/template3.component';
 import { Template2Component } from './template2/template2.component';
@@ -41,6 +39,11 @@ import { HttpInterceptor } from '@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { MyProjectComponent } from './my-project/my-project.component';
 import { EditDataComponent } from './edit-data/edit-data.component';
+import { EditEducationComponent } from './edit-data/edit-education/edit-education.component';
+import { EditPersonalComponent } from './edit-data/edit-personal/edit-personal.component';
+import { EditHobbyComponent } from './edit-data/edit-hobby/edit-hobby.component';
+import { EditSkillComponent } from './edit-data/edit-skill/edit-skill.component';
+import { EditWorkComponent } from './edit-data/edit-work/edit-work.component';
 
 @NgModule({
   declarations: [
@@ -57,9 +60,7 @@ import { EditDataComponent } from './edit-data/edit-data.component';
     SkillsComponent,
     HobbiesComponent,
     Template4Component,
-    AdminUIComponent,
     UserUIComponent,
-    LoggedINheaderComponent,
     ChooseTemmplateComponent,
     Template3Component,
     Template2Component,
@@ -68,7 +69,12 @@ import { EditDataComponent } from './edit-data/edit-data.component';
     AccountsettingsComponent,
     AdminLoginComponent,
     EditDataComponent,
-    MyProjectComponent
+    MyProjectComponent,
+    EditEducationComponent,
+    EditPersonalComponent,
+    EditHobbyComponent,
+    EditSkillComponent,
+    EditWorkComponent
     // ResumePreviewComponent
   ],
   imports: [

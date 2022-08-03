@@ -39,14 +39,11 @@ const resumedetails = new Schema({
             hobby: String,
         
           }],
-        userid: String  
+        userid: String ,
+        profileImage:String 
 
 }
 )
 
-
 var resumecred = mongoose.model('resumecred', resumedetails);
-
-
-
 module.exports = resumecred;

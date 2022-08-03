@@ -1,0 +1,51 @@
+<form [formGroup]="childForm1">
+    <h4>
+        Education Details {{arrayIndex1+1}}
+    </h4>
+        <div *ngFor="let i of data.educational" class="container">
+            <div class="row">
+              <div class="col-md">
+               
+                <mat-form-field appearance="fill">
+                  <mat-label>Qualification</mat-label>
+                  <input matInput placeholder="Qualification" [(ngModel)]="i.qualification" formControlName="qualification" required>
+                </mat-form-field><br>
+                <mat-form-field appearance="fill">
+                  <mat-label>Course Details</mat-label>
+                  <input matInput placeholder="Course Details" [(ngModel)]="i.courseDetails" formControlName="courseDetails"  required>               
+                </mat-form-field><br>
+              </div>
+              <div class="col-md">
+                <mat-form-field appearance="fill">
+                  <mat-label>Institution</mat-label>
+                <input matInput placeholder="Institution/University" [(ngModel)]="i.institution" formControlName="institution" required>
+                <!-- <span class="error text-danger" *ngIf="companyForm.('email').invalid">Email is invalid</span> -->
+        
+                </mat-form-field><br>             
+                <mat-form-field appearance="fill">
+                  <mat-label>Start Date</mat-label>
+                  <input type="date" matInput placeholder="Start Date" [(ngModel)]="i.startDate" formControlName="startDate" required>             
+                </mat-form-field><br>
+                
+              </div>
+              <div class="col-md">
+                <mat-form-field appearance="fill">
+                  <mat-label>Course</mat-label>
+                  <input type="Course" matInput placeholder="Course Name" [(ngModel)]="i.course" formControlName="course" required>              
+                </mat-form-field><br>
+                <mat-form-field appearance="fill">
+                  <mat-label>End Date</mat-label>
+                  <input type="date" matInput placeholder="End Date" [(ngModel)]="i.endDate" formControlName="endDate"  required>              
+                </mat-form-field><br>
+                
+                <button  class="btn btn-danger "  *ngIf="totalEducationDetails>1" (click)="deleteEducation(arrayIndex1)">Remove</button>
+    
+        
+              </div>
+            </div>
+          </div> 
+          
+    </form>
+    
+    
+    

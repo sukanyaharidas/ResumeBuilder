@@ -15,25 +15,18 @@
             </mat-form-field><br>
             <mat-form-field appearance="fill">
               <mat-label>About Me</mat-label>
-              <textarea name="" id=""  rows="10" matInput placeholder="About Me" formControlName="aboutMe" required></textarea>
-            <!-- <span class="error text-danger" *ngIf="companyForm.('email').invalid">Email is invalid</span> -->
-    
-            </mat-form-field><br>
-              
-           
+              <textarea name="" id=""  rows="10" matInput placeholder="About Me" formControlName="aboutMe" required></textarea>    
+            </mat-form-field><br>       
           </div>
           <div class="col-md">
             <mat-form-field appearance="fill">
               <mat-label>Email ID</mat-label>
-            <input matInput placeholder="Email ID" formControlName="email" required>
-            <!-- <span class="error text-danger" *ngIf="companyForm.('email').invalid">Email is invalid</span> -->
-    
+            <input matInput placeholder="Email ID" formControlName="email" required>    
             </mat-form-field><br>             
             <mat-form-field appearance="fill">
               <mat-label>Phone</mat-label>
               <input matInput placeholder="Phone Number" formControlName="phone" required>              
             </mat-form-field><br>
-
             <mat-form-field>
               <div>
                 <mat-toolbar>
@@ -48,11 +41,8 @@
               <div class="card-footer">
                 <div><img src="{{dataimage}}" width="300px"></div>
               </div>
-            </mat-form-field>
-            
-            
-            
-          </div>
+            </mat-form-field>            
+        </div>
           <div class="col-md">
             <mat-form-field appearance="fill">
               <mat-label>Address</mat-label>
@@ -65,22 +55,16 @@
             <mat-form-field appearance="fill">
               <mat-label>Pin Code</mat-label>
               <input matInput placeholder="Pin Code"  formControlName="pin" required>             
-            </mat-form-field><br>
-  
-            <!-- <button *ngIf="totalPersonalDetails>1" (click)="deletePersonalDetails(arrayIndex)" class="btn btn-danger " >Remove</button> -->
-
-    
+            </mat-form-field><br>  
           </div>
         </div>
-      </div> 
-      
+      </div>       
 </form>
 
 
 
 
   
-<!-- <button *ngIf="totalPersonalDetails>1" (click)="deletePersonalDetails(arrayIndex)" class="btn btn-danger " >-</button> -->
 
   
 

@@ -10,13 +10,9 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./template4.component.css']
 })
 export class Template4Component implements OnInit {
-  Data:any={
-    personal:{},
-    educational:[],
-    workexp:[],
-    skills:[],
-    hobbies:[]
-   }
+
+   Data:any={}
+   id:any='temp4';
   constructor(private resumeservice:ResumeserviceService) {}
   ngOnInit() {
     
@@ -45,4 +41,9 @@ export class Template4Component implements OnInit {
     });
     }
 
+
+    saveTemp(){
+      this.resumeservice.sendTempid(this.id);
+    }
+    
 }

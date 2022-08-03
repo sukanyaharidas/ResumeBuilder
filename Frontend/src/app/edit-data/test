@@ -1,0 +1,205 @@
+<div class="row">
+    <div class="col-3">
+        <mat-stepper [linear]="isLinear" orientation="vertical" #stepper>
+            <mat-step [stepControl]="personalDetailsForm">
+                 <form [formGroup]="personalDetailsForm"  >
+                   <ng-template matStepLabel>Personal Details</ng-template>
+                    <app-personal-details *ngFor="let childForm of personalDetailsArray.controls;"
+                    [childForm]="childForm" ></app-personal-details>
+              </form>
+              <div>
+                 <button class="btn btn-success float-end" [disabled]="personalDetailsForm.invalid" (click)="generateEducationDetailsForm()" matStepperNext>Next</button>
+              </div>
+            </mat-step>
+          
+           <mat-step [stepControl]="educationDetailsForm" >
+            <form [formGroup]="educationDetailsForm" >
+              <ng-template matStepLabel>Education Details</ng-template>
+             <app-education-details
+             *ngFor="let childForms of educationDetailsArray.controls;let j=index" 
+              [childForm1]="childForms" [arrayIndex1]="j" [totalEducationDetails]="educationDetailsArray.length" (deleteEducationDetailsEvent)="deleteEducationDetails($event)" >
+            </app-education-details>
+            <button class="btn " [disabled]="!educationDetailsArray.valid"  (click)="addEducationDetailsItem()" style="margin-left:5.9em;color:white;  background-color:#0a0a23;" ><b>+</b> Add</button>
+            </form>
+            <div>
+              <br><br><button class="btn btn-primary "  matStepperPrevious>Back</button>         
+              <button class="btn btn-success float-end" [disabled]="educationDetailsForm.invalid" matStepperNext>Next</button>          
+            </div>          
+          </mat-step>         
+          <mat-step  [stepControl]="workExperienceDetailsForm">
+            <form [formGroup]="workExperienceDetailsForm" >
+              <ng-template matStepLabel>Work Experience</ng-template>
+             <app-workexperience 
+             *ngFor="let childforms of workExperienceArray.controls; let k=index"
+              [childForm2]="childforms"
+              (deleteWorkExperienceEvent)="deleteworkExperience($event)"
+              [arrayIndex]="k"
+              [totalWorkExperience]="workExperienceArray.length"
+             ></app-workexperience>
+            <button class="btn " [disabled]="workExperienceArray.invalid" (click)="addWorkExperienceItem()" style="margin-left:5.9em;color:white;  background-color:#0a0a23;" ><b>+</b> Add</button>
+            </form>        
+            <div>
+              <br><br><button class="btn btn-primary "  matStepperPrevious>Back</button>        
+              <button class="btn btn-success float-end" [disabled]="!workExperienceDetailsForm.valid" matStepperNext>Next</button>          
+            </div>          
+          </mat-step>        
+          <mat-step [stepControl] ="skillsForm">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <form [formGroup]="skillsForm">
+                    <ng-template matStepLabel>Skills</ng-template>
+                    <app-skills
+                    *ngFor="let childForms of skillDetailsArray.controls;let l=index"
+                    [childForm3]="childForms"
+                    [arrayIndex]="l"
+                    [totalSkillDetails]="skillDetailsArray.length"
+                    (deleteSkillDetailsEvent)="deleteskillDetails($event)">
+                  </app-skills>
+                  <button class="btn " [disabled]="skillDetailsArray.invalid" (click)="addSkillDetailsItem()" style="margin-left:1.5em;color:white;  background-color:#0a0a23;" ><b>+</b> Add</button>        
+                  </form>
+                </div>
+                <div class="col-6">
+                  <img src="assets/img/skill4.png" alt="" style="width:550px;height:350px;margin-right:20em;margin-top:1em;">
+                </div>
+              </div>
+          </div>
+          <div>
+            <br><br><button class="btn btn-primary "  matStepperPrevious>Back</button>
+            <button class="btn btn-success float-end" [disabled]="skillsForm.invalid"  matStepperNext>Next</button>
+          </div>
+          </mat-step>
+          
+          <mat-step [stepControl]="hobbiesForm" >
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <form [formGroup]="hobbiesForm">
+                    <ng-template matStepLabel>Hobbies</ng-template>
+                   <app-edit-hobby
+                   *ngFor="let childForms of hobbyDetailsArray.controls;let m=index"
+                   [childForm4]="childForms"
+                   (deleteHobbyDetailsEvent)="deletehobbyDetails($event)"
+                   [totalHobbyDetails]="hobbyDetailsArray.length"
+                   [arrayIndex]="m">
+                  </app-edit-hobby>
+                  <button class="btn "[disabled]="hobbyDetailsArray.invalid" (click)="addHobbyDetailsItem()" style="margin-left:1.5em;color:white;  background-color:#0a0a23;" ><b>+</b> Add</button>        
+                  </form>
+                </div>
+                <div class="col-6">
+                  <img src="assets/img/hobby5.png" alt="" style="width:800px;height:380px;margin-right:500px;padding-right:10em;">
+                </div>
+              </div>
+          </div>
+          <div>
+            <br><br><button class="btn btn-primary "  matStepperPrevious>Back</button>
+            <button (click)="updatedata();changeLocation()"  class="btn btn-success float-end" [disabled]="hobbiesForm.invalid" matStepperNext>Submit</button>
+          </div>
+          </mat-step>
+          
+          </mat-stepper>
+    </div>
+    <div class="col-6">
+        <mat-stepper [linear]="isLinear" orientation="vertical" #stepper>
+            <mat-step [stepControl]="personalDetailsForm">
+                 <form [formGroup]="personalDetailsForm"  >
+                   <ng-template matStepLabel>Personal Details</ng-template>
+                    <app-personal-details *ngFor="let childForm of personalDetailsArray.controls;"
+                    [childForm]="childForm" ></app-personal-details>
+              </form>
+              <div>
+                 <button class="btn btn-success float-end" [disabled]="personalDetailsForm.invalid" (click)="generateEducationDetailsForm()" matStepperNext>Next</button>
+              </div>
+            </mat-step>
+          
+           <mat-step [stepControl]="educationDetailsForm" >
+            <form [formGroup]="educationDetailsForm" >
+              <ng-template matStepLabel>Education Details</ng-template>
+             <app-education-details
+             *ngFor="let childForms of educationDetailsArray.controls;let j=index" 
+              [childForm1]="childForms" [arrayIndex1]="j" [totalEducationDetails]="educationDetailsArray.length" (deleteEducationDetailsEvent)="deleteEducationDetails($event)" >
+            </app-education-details>
+            <button class="btn " [disabled]="!educationDetailsArray.valid"  (click)="addEducationDetailsItem()" style="margin-left:5.9em;color:white;  background-color:#0a0a23;" ><b>+</b> Add</button>
+            </form>
+            <div>
+              <br><br><button class="btn btn-primary "  matStepperPrevious>Back</button>         
+              <button class="btn btn-success float-end" [disabled]="educationDetailsForm.invalid" matStepperNext>Next</button>          
+            </div>          
+          </mat-step>         
+          <mat-step  [stepControl]="workExperienceDetailsForm">
+            <form [formGroup]="workExperienceDetailsForm" >
+              <ng-template matStepLabel>Work Experience</ng-template>
+             <app-workexperience 
+             *ngFor="let childforms of workExperienceArray.controls; let k=index"
+              [childForm2]="childforms"
+              (deleteWorkExperienceEvent)="deleteworkExperience($event)"
+              [arrayIndex]="k"
+              [totalWorkExperience]="workExperienceArray.length"
+             ></app-workexperience>
+            <button class="btn " [disabled]="workExperienceArray.invalid" (click)="addWorkExperienceItem()" style="margin-left:5.9em;color:white;  background-color:#0a0a23;" ><b>+</b> Add</button>
+            </form>        
+            <div>
+              <br><br><button class="btn btn-primary "  matStepperPrevious>Back</button>        
+              <button class="btn btn-success float-end" [disabled]="!workExperienceDetailsForm.valid" matStepperNext>Next</button>          
+            </div>          
+          </mat-step>        
+          <mat-step [stepControl] ="skillsForm">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <form [formGroup]="skillsForm">
+                    <ng-template matStepLabel>Skills</ng-template>
+                    <app-skills
+                    *ngFor="let childForms of skillDetailsArray.controls;let l=index"
+                    [childForm3]="childForms"
+                    [arrayIndex]="l"
+                    [totalSkillDetails]="skillDetailsArray.length"
+                    (deleteSkillDetailsEvent)="deleteskillDetails($event)">
+                  </app-skills>
+                  <button class="btn " [disabled]="skillDetailsArray.invalid" (click)="addSkillDetailsItem()" style="margin-left:1.5em;color:white;  background-color:#0a0a23;" ><b>+</b> Add</button>        
+                  </form>
+                </div>
+                <div class="col-6">
+                  <img src="assets/img/skill4.png" alt="" style="width:550px;height:350px;margin-right:20em;margin-top:1em;">
+                </div>
+              </div>
+          </div>
+          <div>
+            <br><br><button class="btn btn-primary "  matStepperPrevious>Back</button>
+            <button class="btn btn-success float-end" [disabled]="skillsForm.invalid"  matStepperNext>Next</button>
+          </div>
+          </mat-step>
+          
+          <mat-step [stepControl]="hobbiesForm" >
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <form [formGroup]="hobbiesForm">
+                    <ng-template matStepLabel>Hobbies</ng-template>
+                   <app-edit-hobby
+                   *ngFor="let childForms of hobbyDetailsArray.controls;let m=index"
+                   [childForm4]="childForms"
+                   (deleteHobbyDetailsEvent)="deletehobbyDetails($event)"
+                   [totalHobbyDetails]="hobbyDetailsArray.length"
+                   [arrayIndex]="m">
+                  </app-edit-hobby>
+                  <button class="btn "[disabled]="hobbyDetailsArray.invalid" (click)="addHobbyDetailsItem()" style="margin-left:1.5em;color:white;  background-color:#0a0a23;" ><b>+</b> Add</button>        
+                  </form>
+                </div>
+                <div class="col-6">
+                  <img src="assets/img/hobby5.png" alt="" style="width:800px;height:380px;margin-right:500px;padding-right:10em;">
+                </div>
+              </div>
+          </div>
+          <div>
+            <br><br><button class="btn btn-primary "  matStepperPrevious>Back</button>
+            <button (click)="updatedata();changeLocation()"  class="btn btn-success float-end" [disabled]="hobbiesForm.invalid" matStepperNext>Submit</button>
+          </div>
+          </mat-step>
+          
+          </mat-stepper>
+    </div>
+    <div class="col-3">
+
+    </div>
+</div>

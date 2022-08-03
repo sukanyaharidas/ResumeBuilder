@@ -12,6 +12,8 @@ import html2canvas from 'html2canvas';
 })
 export class Template2Component implements OnInit {
   Data:any={}
+  id:any='temp2';
+  imageUrl:String='';
   constructor(private resumeservice:ResumeserviceService) { }
 
   ngOnInit(): void {
@@ -19,7 +21,10 @@ export class Template2Component implements OnInit {
     this.resumeservice.getdata().subscribe((data:any)=>{
       this.Data = JSON.parse(JSON.stringify(data))
       console.log(this.Data);
+      this.imageUrl=data.profileImage;
     })
+   
+
   }
 
   downloadpdf()
@@ -41,6 +46,9 @@ export class Template2Component implements OnInit {
     });
 
     }
-
+    saveTemp(){
+      this.resumeservice.sendTempid(this.id);
+    }
+    
 
 }

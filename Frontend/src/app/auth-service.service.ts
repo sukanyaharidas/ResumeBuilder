@@ -42,42 +42,4 @@ export class AuthServiceService {
       return  localStorage.getItem('token');
     }
 
-
-    // getrole(){
-    //   if(this.role==='admin'){
-    //     this.Adminrole=true;
-    //     this.Userrole=false;
-    //   }
-    //   else{
-    //     this.Adminrole=false;
-    //     this.Userrole=true;
-    //   }
-    // }
-
-//   setrole(Role:any){
-//     if(Role=='admin'){
-      
-//       this.role='admin'
-      
-//     }
-//     else{
-
-//       this.role='user'
-//     }
-
-//     console.log('role is', this.role)
-   
-
-// }
-    // getAdminrole(){
-    //   this.Adminrole=true;
-    //   this.Userrole=false;
-    // }
-    // getUserrole(){
-    //   this.Userrole=true;
-    //   this.Adminrole=false;
-    // }
-// function subscribe(arg0: (data: any) => void) {
-//   throw new Error('Function not implemented.');
-// }
 }

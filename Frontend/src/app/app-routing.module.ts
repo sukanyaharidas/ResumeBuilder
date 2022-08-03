@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountsettingsComponent } from './accountsettings/accountsettings.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
-import { AdminUIComponent } from './admin-ui/admin-ui.component';
 import { ChooseTemmplateComponent } from './choose-temmplate/choose-temmplate.component';
 import { Form1Component } from './form1/form1.component';
 import { HomeComponent } from './home/home.component';
@@ -30,10 +29,9 @@ const routes: Routes = [{path:"",component: HomeComponent},
                         {path:"\home_user",component:UserUIComponent,canActivate:[AuthGuard]},
                         {path:"\Accountsettings",component:AccountsettingsComponent,canActivate:[AuthGuard]},
                         {path:"\admin",component:AdminLoginComponent},
-                        {path:"\home_admin",component:AdminUIComponent,canActivate:[AuthGuard]},
                         {path:"\choosetemp",component:ChooseTemmplateComponent,canActivate:[AuthGuard]},
-                        {path:"\data_edit",component:EditDataComponent},
-                        {path:"\myresumes", component:MyProjectComponent}
+                        {path:"\data_edit",component:EditDataComponent,canActivate:[AuthGuard]},
+                        {path:"\myresumes", component:MyProjectComponent,canActivate:[AuthGuard]}
                         // {path:"\previewResume",
                         //  component:ResumePreviewComponent,
                         // children:[

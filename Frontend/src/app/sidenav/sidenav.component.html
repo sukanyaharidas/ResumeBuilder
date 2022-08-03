@@ -2,23 +2,13 @@
 
 <div class="sidebar" #sidebar opened="true">
     <div class="logo_content">
-      <div class="logo">
-  
+      <div class="logo"> 
         <i class='bx bxs-dashboard'></i>
         <div class="logo_name">Explore</div>
       </div>
       <i class='bx bx-menu' id="btn"  style="cursor:pointer"></i>
     </div>
     <ul class="nav_list">
-      <!-- <li>
-        <a href="#" >
-          <i class='bx bxs-grid-alt'></i>
-         <input type="text" placeholder="Search...">
-        </a>
-        <span class="tooltip">Search</span>
-
-      </li> -->
-  
       <li *ngIf="userRole">
         <a routerLink="/home_user" ></a></li>
       <li *ngIf="auth.loggedIn() && userRole">
@@ -26,66 +16,30 @@
           <i class='bx bx-folder'></i>
           <span class="links_name" >My Projects</span>
         </a>
-        <!-- <span class="tooltip">My Projects</span> -->
-  
-  
       </li>
-      <!-- <li>
-        <a href="#" >
-          <i class="fa-solid fa-gear"></i>
-          <span class="links_name">Dashboard</span>
-        </a>
-        <span class="tooltip">Dashboard</span>
-  
-  
-      </li> -->
-      <li  >
+      <li>
         <a routerLink="/home_user" >
           <i class='bx bxs-grid-alt'></i>
           <span class="links_name">Templates</span>
         </a>
-        <!-- <span class="tooltip">Templates</span> -->
-  
-  
       </li>
       <li *ngIf="userRole" >
         <a routerLink="/data" >
           <i class='bx bxs-grid-alt'></i>
           <span class="links_name" >Create Resume</span>
         </a>
-        <!-- <span class="tooltip">Templates</span> -->
-  
-  
       </li>
       <li *ngIf="adminRole">
         <a routerLink="/Accountsettings">
           <i class='bx bx-user'></i>
           <span class="links_name">Account</span>
         </a>
-        <!-- <span class="tooltip">Account</span> -->
-  
-  
       </li>
-      <!-- <li>
-        <a href="#" >
-          <i class='bx bx-trash'></i>
-          <span class="links_name">Trash</span>
-        </a>
-        <span class="tooltip">Trash</span>
-  
-  
-      </li> -->
-
       <li *ngIf="adminRole">
         <a routerLink="/home_user" >
           <i class='bx bx-help-circle'></i>
           <span class="links_name">About Us</span>
         </a>
-        <!-- <span class="tooltip">About Us</span> -->
-  
-  
-      </li>
-  
+      </li> 
     </ul>
-
   </div>

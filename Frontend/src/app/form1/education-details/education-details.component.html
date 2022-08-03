@@ -4,8 +4,7 @@
     </h4>
         <div class="container">
             <div class="row">
-              <div class="col-md">
-               
+              <div class="col-md">              
                 <mat-form-field appearance="fill">
                   <mat-label>Qualification</mat-label>
                   <input matInput placeholder="Qualification"  formControlName="qualification" required>
@@ -18,15 +17,12 @@
               <div class="col-md">
                 <mat-form-field appearance="fill">
                   <mat-label>Institution</mat-label>
-                <input matInput placeholder="Institution/University" formControlName="institution" required>
-                <!-- <span class="error text-danger" *ngIf="companyForm.('email').invalid">Email is invalid</span> -->
-        
+                <input matInput placeholder="Institution/University" formControlName="institution" required>        
                 </mat-form-field><br>             
                 <mat-form-field appearance="fill">
                   <mat-label>Start Date</mat-label>
                   <input type="date" matInput placeholder="Start Date"  formControlName="startDate" required>             
                 </mat-form-field><br>
-                
               </div>
               <div class="col-md">
                 <mat-form-field appearance="fill">
@@ -36,15 +32,11 @@
                 <mat-form-field appearance="fill">
                   <mat-label>End Date</mat-label>
                   <input type="date" matInput placeholder="End Date" formControlName="endDate"  required>              
-                </mat-form-field><br>
-                
-                <button  class="btn btn-danger "  *ngIf="totalEducationDetails>1" (click)="deleteEducation(arrayIndex1)">Remove</button>
-    
-        
+                </mat-form-field><br>               
+                <button  class="btn btn-danger "  *ngIf="totalEducationDetails>1" (click)="deleteEducation(arrayIndex1)">Remove</button>          
               </div>
             </div>
-          </div> 
-          
+          </div>          
     </form>
     
     

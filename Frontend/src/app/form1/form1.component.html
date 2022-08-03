@@ -1,27 +1,15 @@
-<!-- Start Personal Details -->
 
 <mat-stepper [linear]="isLinear" #stepper>
+<!-- Start Personal Details -->
   <mat-step [stepControl]="personalDetailsForm">
     <form [formGroup]="personalDetailsForm"  >
       <ng-template matStepLabel>Personal Details</ng-template>
-          <!-- <app-personal-details *ngFor="let chilForm of personalDetailsForm.get('personalDetails').controls"
-          [childForm]="chilForm"></app-personal-details> -->
           <app-personal-details *ngFor="let childForm of personalDetailsArray.controls;"
           [childForm]="childForm" ></app-personal-details>
-          <!-- <button class="btn " [disabled]="!personalDetailsArray.valid" (click)="addPersonalDetailsItem()" style="margin-left:5.9em;color:white;  background-color:#0a0a23;" ><b>+</b> Add new details</button> -->
-
-
     </form>
-
-
     <div>
-
-      <button class="btn btn-success float-end" [disabled]="personalDetailsForm.invalid" (click)="generateEducationDetailsForm()" matStepperNext>Next</button>
-
-      <!-- <button class="btn btn-success float-end" [disabled]="personalDetailsForm.invalid" matStepperNext>Next</button> -->
-
+        <button class="btn btn-success float-end" [disabled]="personalDetailsForm.invalid" (click)="generateEducationDetailsForm()" matStepperNext>Next</button>
     </div>
-
   </mat-step>
 <!-- End Personal Details -->
 
@@ -33,23 +21,12 @@
     [childForm1]="childForms" [arrayIndex1]="j" [totalEducationDetails]="educationDetailsArray.length" (deleteEducationDetailsEvent)="deleteEducationDetails($event)" >
   </app-education-details>
   <button class="btn " [disabled]="!educationDetailsArray.valid"  (click)="addEducationDetailsItem()" style="margin-left:5.9em;color:white;  background-color:#0a0a23;" ><b>+</b> Add new details</button>
-
-
   </form>
-
   <div>
     <br><br><button class="btn btn-primary "  matStepperPrevious>Back</button>
-
     <button class="btn btn-success float-end" [disabled]="educationDetailsForm.invalid" matStepperNext>Next</button>
-
-    <!-- <button class="btn btn-success float-end" [disabled]="personalDetailsForm.invalid" matStepperNext>Next</button> -->
-
   </div>
-  <!-- <button type="submit" >Submit</button> -->
-
 </mat-step>
-
-
 
 <mat-step  [stepControl]="workExperienceDetailsForm">
   <form [formGroup]="workExperienceDetailsForm" >
@@ -63,17 +40,10 @@
    ></app-workexperience>
   <button class="btn " [disabled]="workExperienceArray.invalid" (click)="addWorkExperienceItem()" style="margin-left:5.9em;color:white;  background-color:#0a0a23;" ><b>+</b> Add new details</button>
   </form>
-
   <div>
     <br><br><button class="btn btn-primary "  matStepperPrevious>Back</button>
-
     <button class="btn btn-success float-end" [disabled]="!workExperienceDetailsForm.valid" matStepperNext>Next</button>
-
-    <!-- <button class="btn btn-success float-end" [disabled]="personalDetailsForm.invalid" matStepperNext>Next</button> -->
-
   </div>
-  <!-- <button type="submit" (click)="userDetails()">Submit</button> -->
-
 </mat-step>
 
 <mat-step [stepControl] ="skillsForm">
@@ -96,7 +66,6 @@
         <img src="assets/img/skill4.png" alt="" style="width:550px;height:350px;margin-right:20em;margin-top:1em;">
       </div>
     </div>
-  <!-- <button type="submit" (click)="userDetails()">Submit</button> -->
 </div>
 <div>
   <br><br><button class="btn btn-primary "  matStepperPrevious>Back</button>
@@ -124,7 +93,6 @@
         <img src="assets/img/hobby5.png" alt="" style="width:800px;height:380px;margin-right:500px;padding-right:10em;">
       </div>
     </div>
-  <!-- <button type="submit" (click)="userDetails()">Submit</button> -->
 </div>
 <div>
   <br><br><button class="btn btn-primary "  matStepperPrevious>Back</button>

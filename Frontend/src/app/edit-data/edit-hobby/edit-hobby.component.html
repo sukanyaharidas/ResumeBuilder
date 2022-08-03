@@ -1,0 +1,35 @@
+<form [formGroup]="childForm4">
+    <br>
+    <h4>
+        Hobby {{arrayIndex+1}}
+    </h4>
+        <div *ngFor="let i of data.hobbies"   class="container">
+            <div class="row">
+              <div  class="col-md">
+               
+                <mat-form-field  appearance="fill" >
+                  <mat-label>Hobby</mat-label>
+                  <input type="text" matInput placeholder="Your Hobby" name="hobby" [(ngModel)]="i.hobby"  formControlName="hobby" required>
+                </mat-form-field><br>
+        
+              </div>
+              
+              <div class="col-md">
+                
+                <button *ngIf="totalHobbyDetails>1" (click)="deleteHobbyDetails(arrayIndex)" class="btn btn-danger "  >Remove</button>
+
+
+              </div>
+              <div class="col-md">
+              
+                
+
+        
+              </div>
+            </div>
+          </div> 
+
+    </form>
+    
+    
+    

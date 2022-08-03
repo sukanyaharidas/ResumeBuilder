@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoggedINheaderComponent } from './logged-inheader.component';
+import { EditSkillComponent } from './edit-skill.component';
 
-describe('LoggedINheaderComponent', () => {
-  let component: LoggedINheaderComponent;
-  let fixture: ComponentFixture<LoggedINheaderComponent>;
+describe('EditSkillComponent', () => {
+  let component: EditSkillComponent;
+  let fixture: ComponentFixture<EditSkillComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoggedINheaderComponent ]
+      declarations: [ EditSkillComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoggedINheaderComponent);
+    fixture = TestBed.createComponent(EditSkillComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

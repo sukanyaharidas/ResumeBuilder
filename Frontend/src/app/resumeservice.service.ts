@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ResumeserviceService {
 
+
+  currentTemp:any='';
   constructor(private http: HttpClient) { }
   data ={
     educational: {
@@ -65,6 +67,34 @@ export class ResumeserviceService {
     
   }
 
+  getEditdata(){
+    return this.http.get('http://localhost:3000/getDetails')
+  }
+ getTemp(){
+  return this.http.get('http://localhost:3000/getTemp')
+ }
+
+  sendTempid(id:any){
+    return this.http.post('http://localhost:3000/sendTempid', {id})
+    .subscribe((data)=>console.log('return temp data',data));
+  }
+
+  sendprofileimage(imageData:any){
+    return this.http.post('http://localhost:3000/imageUpload', {imageData})
+    .subscribe((data)=>console.log('image added successfully'));
+  }
+
+  chooseTemp(data:any){
+    if(localStorage.getItem('temp')!==data){
+      localStorage.setItem('temp',data);
+
+    }
+    
+  }
+
+  getCurrentTemp(){
+    return this.currentTemp;
+  }
 }
 
 

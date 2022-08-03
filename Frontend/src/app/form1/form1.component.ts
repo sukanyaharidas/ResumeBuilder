@@ -1,16 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormArray, FormBuilder, Validators} from '@angular/forms';
-import { FormGroup, FormControl } from '@angular/forms';
-import { NgForm } from '@angular/forms';
-import { ngbCarouselTransitionOut } from '@ng-bootstrap/ng-bootstrap/carousel/carousel-transition';
+import {FormArray,FormGroup} from '@angular/forms';
 import { EducationDetailsComponent } from './education-details/education-details.component';
 import { HobbiesComponent } from './hobbies/hobbies.component';
 import { PersonalDetailsComponent } from './personal-details/personal-details.component';
 import { SkillsComponent } from './skills/skills.component';
 import { WorkexperienceComponent } from './workexperience/workexperience.component';
-
 import { Router } from '@angular/router';
-
 import { ResumeserviceService } from '../resumeservice.service';
 @Component({
   selector: 'app-form1',
@@ -25,8 +20,6 @@ export class Form1Component implements OnInit {
   public workExperienceDetailsForm: FormGroup |any;
   public skillsForm:FormGroup|any;
   public hobbiesForm: FormGroup|any;
-// public userdetails: FormGroup|any;
-
 
 get personalDetailsArray(): FormArray{
   return this.personalDetailsForm?.get('personalDetails') as FormArray;
@@ -57,8 +50,8 @@ ngOnInit(): void {
   this.generateWorkExperienceForm();
   this.generateSkillDetailsForm();
   this.generateHobbyDetailsForm();
+  
 }
-
 
 // personal details functions 
  public generatePersonalDetailsForm():void{
@@ -69,15 +62,6 @@ ngOnInit(): void {
       ])
     });
  }
-
-//  public addPersonalDetailsItem():void{
-//   this.personalDetailsArray?.push( PersonalDetailsComponent.addPersonalDetails());
-//  }
-
-//  public deletepersonalDetails(index:number):void{
-//  this.personalDetailsArray?.removeAt(index);
-//  }  
-
 
 //  education details functions
 public generateEducationDetailsForm():void{
@@ -115,6 +99,7 @@ public deleteworkExperience(index:number):void{
   this.workExperienceArray?.removeAt(index);
 }
 
+// skill functions
 public generateSkillDetailsForm():void{
   this.skillsForm= new FormGroup({
     skillDetails: new FormArray([
@@ -131,7 +116,7 @@ public deleteskillDetails(index:number):void{
   this.skillDetailsArray?.removeAt(index);
 }
 
-
+// Hobby functions
 public generateHobbyDetailsForm():void{
   this.hobbiesForm= new FormGroup({
     hobbyDetails: new FormArray([
@@ -147,11 +132,6 @@ public addHobbyDetailsItem():void{
   this.hobbyDetailsArray?.removeAt(index);
  }
 
-// educationaldetailsmodel = new educationaldetailsmodel("","","","","","");
-// workexperiencedetailsmodel = new workexperiencedetailsmodel("","","","","")
-// personaldetailsmodel = new personaldetailsmodel("","","","","","","","","")
-// skilldetailssmodel=new skilldetailsmodel("")
-// hobbydetailsmodel =new hobbydetailesmodel("")
  Details:any={
   personal:{},
   educational:[],
@@ -172,13 +152,6 @@ this.resumeservice.senddata(this.Details);
 this.router.navigate(['/choosetemp'])
 console.log(this.Details);
 
-  // this.resumeservice.senddata(this.resumedata)
-  // console.log();
-  // console.log(this.personalDetailsForm.value);
-  // console.log(this.educationDetailsForm.value);
-  // console.log(this.workExperienceDetailsForm.value);
-  // console.log(this.skillsForm.value);
-  // console.log(this.hobbiesForm.value);
  }
 
 

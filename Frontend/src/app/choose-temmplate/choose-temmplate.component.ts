@@ -16,20 +16,20 @@ export class ChooseTemmplateComponent implements OnInit {
     
   }
    temp1(){
-    this.router.navigate(['\temp1']);
+    this.router.navigate(['\_temp1']);
 
   }
 
   temp2(){
-    this.router.navigate(['\temp2']);
+    this.router.navigate(['\_temp2']);
 
   }
   temp3(){
-    this.router.navigate(['\temp3']);
+    this.router.navigate(['\_temp3']);
 
   }
   temp4(){
-    this.router.navigate(['\temp4']);
+    this.router.navigate(['\_temp4']);
 
   }
 
