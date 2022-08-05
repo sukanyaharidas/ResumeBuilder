@@ -1,0 +1,20 @@
+<app-header></app-header>
+<app-sidenav></app-sidenav>
+
+
+<table>
+    <tr>
+      <th>Username</th>
+      <th>User Email</th>
+      <th>Manage Data</th>
+    </tr>
+    <tr  *ngFor="let item of userdata">
+      <td>{{item.fname}}</td>
+      <td>{{item.emailid}}</td>
+     <td><button type="button" class="btn btn-secondary" (click)="deleteusercred(item)">Delete</button></td>
+    </tr>
+  
+
+
+  </table>
+  

@@ -3,12 +3,14 @@ const cors = require("cors");
 const bodyparser = require("body-parser");
 const path = require("path")
 const resumecred  = require('./src/model/models/resumemodel')
-const signup= require('./src/model/models/signupmodule')
+const signup= require('./src/model/models/signupmodel')
 const jwt = require("jsonwebtoken");
 const temp=require("./src/model/models/templatemodel")
-
+const nodemailer = require('nodemailer');
 let currentUser='';
 let tempId=[];
+let string=''
+let id =''
 const mongoose = require("mongoose")
 const dotenv = require("dotenv");
 // const { sign } = require("crypto");
@@ -21,27 +23,6 @@ app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000}));
 
 
-
-// function verifyToken(req,res,next){
-//   if(!req.headers.Authorization){
-//     return res.status(401).send('unauthorizedrequest')
-//   }
-//   let token=req.headers.Authorization.split('')[1]
-//   if(token=='null'){
-//     return res.status(401).send('unauthorizedrequest')
-
-//   }
-//   let payload=jwt.verify(token, 'secretKey')
-//   console.log(payload);
-//   if(!payload)
-// {
-//   return res.status(401).send('unauthorizedrequest')
-//   req.userId=payload.subject;
-  
-
-// }
-// next();
-// }
 
 
 
@@ -75,9 +56,8 @@ mongoose.connect(process.env.DATABASE_URL, {
 // requiring routes
 
 
-app.post('/insert', function (req, res) {
+app.post('/api/insert', function (req, res) {
   console.log(currentUser);
-  // console.log('reqdata',req.body.data.personal.personalDetails)
     console.log(req.body.data);
   var resumeinputs = {
  personal:req.body.data.personal.personalDetails,
@@ -85,8 +65,8 @@ app.post('/insert', function (req, res) {
  workexp:req.body.data.workexp.workExperience,
  hobbies:req.body.data.hobbies.hobbyDetails,
  skills:req.body.data.skills.skillDetails,
-userid:currentUser,
-profileImage:imageUrl
+ userid:currentUser,
+ profileImage:imageUrl
   }
 
   resumecred.findOneAndUpdate({userid:currentUser},
@@ -112,7 +92,7 @@ profileImage:imageUrl
 
 
 
-app.get('/resdata', (req,res)=>{
+app.get('/api/resdata', (req,res)=>{
 
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Method:GET,POST,PUT,DELETE");
@@ -134,7 +114,7 @@ app.get('/resdata', (req,res)=>{
 
 
 
-app.get('/editDetails', function(req,res){
+app.get('/api/editDetails', function(req,res){
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Method:GET,POST,PUT,DELETE");
   resumecred
@@ -153,7 +133,7 @@ app.get('/editDetails', function(req,res){
 })
 
 
-app.get('/getTemp', function(req,res){
+app.get('/api/getTemp', function(req,res){
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Method:GET,POST,PUT,DELETE");
   temp
@@ -197,7 +177,7 @@ app.get('/getTemp', function(req,res){
 //     }
 //  );
 
- app.post('/sendTempid', function (req, res) {
+ app.post('/api/sendTempid', function (req, res) {
   console.log(currentUser);
   // console.log('reqdata',req.body.data.personal.personalDetails)
   tempId.push(req.body.id);
@@ -251,7 +231,7 @@ app.get('/getTemp', function(req,res){
 //  );
 
  let imageUrl='';
- app.post('/imageUpload', function(req,res){
+ app.post('/api/imageUpload', function(req,res){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
 
@@ -266,7 +246,7 @@ app.get('/getTemp', function(req,res){
     //   })
  })
 
-app.post('/signup',function(req,res){
+app.post('/api/signup',function(req,res){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods:GET,POST,PUT,DELETE");
     console.log(req.body.users);
@@ -292,7 +272,7 @@ app.post('/signup',function(req,res){
 
 
  
-app.post('/login', (req, res) => {
+app.post('/api/login', (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Method:GET,POST,PUT,DELETE");
     console.log("data is",req.body);
@@ -317,7 +297,7 @@ app.post('/login', (req, res) => {
 
 
 // admin login
-app.post('/login_admin', (req, res) => {
+app.post('/api/login_admin', (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Method:GET,POST,PUT,DELETE");
   console.log("data is",req.body);
@@ -340,6 +320,69 @@ app.post('/login_admin', (req, res) => {
     }
   })
 
+
+app.post('/api/sendmail',(req, res)=>{
+
+
+  resumecred.findOne({userid:currentUser},(err,data)=>{
+    if(data){
+      id=data._id
+    string= id.valueOf()
+      console.log('checkid',string)
+      res.status(200).send()
+    }else{
+      res.send()
+    }
+console.log(data);
+console.log(string)
+let link=req.body.mail +'/'+id
+  console.log(link)
+ 
+  var transporter = nodemailer.createTransport({
+
+    service : "hotmail",
+    auth :{
+        user : 'wishesforu123@outlook.com',
+        pass:"Vinwish@123"
+    },
+    tls : { rejectUnauthorized: false }
+  });
+
+  var mailOptions = {
+      from: 'wishesforu123@outlook.com',
+      to: currentUser,
+      // to: this.data.email,
+      subject: 'Canvas',
+      text: 'Thankyou for choosing our Platform.Click the below link to see your Resume'+ link 
+
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+      if(error){
+          console.log(error);
+      } else {
+          console.log('email send:'+info.response);
+      }
+  });
+
+});
+})
+
+app.get('/api/displayusercred',(req,res)=>{
+  signup.find()
+  .then((data1)=>{
+    res.send(data1)
+  })
+})
+
+app.delete('/api/deleteusercred/:id',(req,res)=>{
+id=req.params.id
+signup.findByIdAndRemove({"_id":id })
+.then(()=>{
+  console.log('deleted');
+  res.send()
+})
+})
 
 
 app.get('/', (req, res) => {

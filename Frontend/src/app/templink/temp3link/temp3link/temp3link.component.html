@@ -1,19 +1,4 @@
-<app-header></app-header>
-<div class="cont">
-    <div class="buttons">
-      <li class="nav-item dropdown">
-        <input type="text" #inp1 id="input" *ngIf="show" value="http://localhost:4200/temp2ink/{{Data._id}}" readonly>
-         <a class="nav-link dropdown-toggle scrollto" id="navbarDropdown" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-           Download
-         </a>
-         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <li><a class="dropdown-item"(click)="downloadpdf()"> Download as PDF</a></li>
-           <li><a class="dropdown-item" (click)="copylink(inp1)"  style="cursor: pointer;">Get view only link</a></li>
-           <li><a class="dropdown-item" (click)="sendmail3()"  style="cursor: pointer;">Send viewlink to Your mail</a></li>
-         </ul>
-         <a class="nav-item scrollto active" (click)="saveTemp()" class="btn">Save</a>
-       </li>
-</div>
+
   <section   id="contentToConvert">
     <div class="page-content">
       <div class="container">
@@ -124,4 +109,3 @@
       </div></div>
           </div>
     </section>
-  </div>

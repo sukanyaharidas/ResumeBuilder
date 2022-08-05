@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { ResumeserviceService } from '../resumeservice.service';
-
+import { AuthServiceService } from '../auth-service.service';
 
 import  jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-template2',
   templateUrl: './template2.component.html',
   styleUrls: ['./template2.component.css']
 })
 export class Template2Component implements OnInit {
+
+  show:boolean=true
   Data:any={}
   id:any='temp2';
   imageUrl:String='';
-  constructor(private resumeservice:ResumeserviceService) { }
+  constructor(private resumeservice:ResumeserviceService,public authservice:AuthServiceService,private toast:NgToastService) { }
 
   ngOnInit(): void {
 
@@ -50,5 +52,17 @@ export class Template2Component implements OnInit {
       this.resumeservice.sendTempid(this.id);
     }
     
-
+    copylink(input:any){
+      input.select();
+      document.execCommand('copy');
+      console.log(input);
+    
+    }
+sendmail2(){
+  this.authservice.mailsend('http://localhost:4200/temp2link').subscribe((mail:any)=>{
+    var respons = JSON.parse(JSON.stringify(mail))
+    // console.log("happened")
+    this.toast.success({detail:"Success Message",summary:"Mail Sent",duration:5000})
+})
+}
 }

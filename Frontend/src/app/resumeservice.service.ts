@@ -57,30 +57,30 @@ export class ResumeserviceService {
 
   senddata(data:any){
     console.log(data);
-    return this.http.post('http://localhost:3000/insert', {data})
+    return this.http.post('http://localhost:3000/api/insert', {data})
     .subscribe((data)=>console.log('returndata'));
   }
 
 
   getdata(){
-    return this.http.get('http://localhost:3000/resdata')
+    return this.http.get('http://localhost:3000/api/resdata')
     
   }
 
   getEditdata(){
-    return this.http.get('http://localhost:3000/getDetails')
+    return this.http.get('http://localhost:3000/api/getDetails')
   }
  getTemp(){
-  return this.http.get('http://localhost:3000/getTemp')
+  return this.http.get('http://localhost:3000/api/getTemp')
  }
 
   sendTempid(id:any){
-    return this.http.post('http://localhost:3000/sendTempid', {id})
+    return this.http.post('http://localhost:3000/api/sendTempid', {id})
     .subscribe((data)=>console.log('return temp data',data));
   }
 
   sendprofileimage(imageData:any){
-    return this.http.post('http://localhost:3000/imageUpload', {imageData})
+    return this.http.post('http://localhost:3000/api/imageUpload', {imageData})
     .subscribe((data)=>console.log('image added successfully'));
   }
 

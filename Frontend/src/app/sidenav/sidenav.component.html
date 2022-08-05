@@ -36,6 +36,12 @@
         </a>
       </li>
       <li *ngIf="adminRole">
+        <a routerLink="/manageuser">
+          <i class='bx bx-user'></i>
+          <span class="links_name">Manage User</span>
+        </a>
+      </li>
+      <li *ngIf="adminRole">
         <a routerLink="/home_user" >
           <i class='bx bx-help-circle'></i>
           <span class="links_name">About Us</span>
