@@ -50,7 +50,8 @@ import { NgToastModule } from 'ng-angular-popup';
 import{Temp1linkComponent} from './templink/temp1link/temp1link/temp1link.component'
 import { Temp2linkComponent } from './templink/temp2link/temp2link/temp2link.component';
 import { Temp4linkComponent } from './templink/temp4link/temp4link/temp4link.component';
-
+import { MytemplatesComponent } from './mytemplates/mytemplates.component';
+import { NgxCopyPasteModule } from 'ngx-copypaste';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,7 +86,8 @@ import { Temp4linkComponent } from './templink/temp4link/temp4link/temp4link.com
     EditSkillComponent,
     EditWorkComponent,
     Temp3linkComponent,
-    ManageuserComponent
+    ManageuserComponent,
+    MytemplatesComponent
     // ResumePreviewComponent
   ],
   imports: [
@@ -97,6 +99,7 @@ import { Temp4linkComponent } from './templink/temp4link/temp4link/temp4link.com
     NgbModule,
     NgToastModule,
     MatStepperModule,
+    NgxCopyPasteModule,
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,

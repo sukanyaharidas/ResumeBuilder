@@ -10,7 +10,7 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./template4.component.css']
 })
 export class Template4Component implements OnInit {
-  show:boolean=true
+  show:boolean=false
    Data:any={}
    id:any='temp4';
   constructor(private resumeservice:ResumeserviceService,public authservice:AuthServiceService,private toast:NgToastService) {}

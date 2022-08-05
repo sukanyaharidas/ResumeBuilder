@@ -20,16 +20,21 @@ import { Temp2linkComponent } from './templink/temp2link/temp2link/temp2link.com
 import { Temp3linkComponent } from './templink/temp3link/temp3link/temp3link.component';
 import { Temp4linkComponent } from './templink/temp4link/temp4link/temp4link.component';
 import { ManageuserComponent } from './manageuser/manageuser.component';
+import { MytemplatesComponent } from './mytemplates/mytemplates.component';
+import { RoleGuard } from './role.guard';
+import { UserGuard } from './user.guard';
+
+
 const routes: Routes = [{path:"",component: HomeComponent},
                         {path:"\login",component: LoginComponent},
                         {path:"\signup",component: SignupComponent},
-                        {path:"\_temp1",component: Template1Component},
-                        {path:"\data",component: Form1Component,canActivate:[AuthGuard]},
-                        {path:"\_temp2",component:Template2Component,canActivate:[AuthGuard]},
-                        {path:"\_temp3",component:Template3Component,canActivate:[AuthGuard]},
-                        {path:"\_temp4",component:Template4Component,canActivate:[AuthGuard]},
+                        {path:"\_temp1",component: Template1Component,canActivate:[AuthGuard,UserGuard]},
+                        {path:"\data",component: Form1Component,canActivate:[AuthGuard,UserGuard]},
+                        {path:"\_temp2",component:Template2Component,canActivate:[AuthGuard,UserGuard]},
+                        {path:"\_temp3",component:Template3Component,canActivate:[AuthGuard,UserGuard]},
+                        {path:"\_temp4",component:Template4Component,canActivate:[AuthGuard,UserGuard]},
                         {path:"\home_user",component:UserUIComponent,canActivate:[AuthGuard]},
-                        {path:"\Accountsettings",component:AccountsettingsComponent,canActivate:[AuthGuard]},
+                        {path:"\Accountsettings",component:AccountsettingsComponent,canActivate:[AuthGuard,RoleGuard]},
                         {path:"\admin",component:AdminLoginComponent},
                         {path:"\choosetemp",component:ChooseTemmplateComponent,canActivate:[AuthGuard]},
                         {path:"\data_edit",component:EditDataComponent,canActivate:[AuthGuard]},
@@ -38,7 +43,11 @@ const routes: Routes = [{path:"",component: HomeComponent},
                         {path:"temp2link/:id",component:Temp2linkComponent},
                         {path:"temp3link/:id",component:Temp3linkComponent},
                         {path:"temp4link:id",component:Temp4linkComponent},
-                        {path:"\manageuser",component:ManageuserComponent}
+                        {path:"\manageuser",component:ManageuserComponent},
+                        {path:"\choosetemp",component:ChooseTemmplateComponent,canActivate:[AuthGuard,UserGuard]},
+                        {path:"\data_edit",component:EditDataComponent,canActivate:[AuthGuard,UserGuard]},
+                        {path:"\myresumes", component:MyProjectComponent,canActivate:[AuthGuard,UserGuard]},
+                        {path:"\_templates", component:MytemplatesComponent,canActivate:[AuthGuard,RoleGuard]}
                         // {path:"\previewResume",
                         //  component:ResumePreviewComponent,
                         // children:[

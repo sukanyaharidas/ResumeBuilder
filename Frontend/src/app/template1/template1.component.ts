@@ -10,7 +10,7 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./template1.component.css']
 })
 export class Template1Component implements OnInit {
-  show:boolean=true
+  show:boolean=false
   
   Data:any={
     
@@ -60,12 +60,12 @@ saveTemp(){
   this.resumeservice.sendTempid(this.id);
 }
 
-copylink(input:any){
-  input.select();
-  document.execCommand('copy');
-  console.log(input);
+// copylink(input:any){
+//   input.select();
+//   document.execCommand('copy');
+//   console.log(input);
 
-}
+// }
 
 sendmail(){
   this.authservice.mailsend('http://localhost:4200/temp1link').subscribe((mail:any)=>{

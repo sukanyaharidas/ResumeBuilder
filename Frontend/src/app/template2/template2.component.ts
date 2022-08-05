@@ -12,7 +12,7 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class Template2Component implements OnInit {
 
-  show:boolean=true
+  show:boolean=false
   Data:any={}
   id:any='temp2';
   imageUrl:String='';

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
+import { coerceNumberProperty } from '@angular/cdk/coercion';
 @Injectable({
   providedIn: 'root'
 })
 export class ResumeserviceService {
-
+   alltemp=['temp1','temp2','temp3','temp4'];
 
   currentTemp:any='';
   constructor(private http: HttpClient) { }
@@ -95,6 +96,26 @@ export class ResumeserviceService {
   getCurrentTemp(){
     return this.currentTemp;
   }
+
+  // removeTemp(temp:any):boolean{
+  //   let index = this.alltemp.indexOf(temp); //find index in your array
+  //   this.alltemp.splice(index, 1);//remove element from array
+  //   console.log(this.alltemp)
+  //   return false;
+
+  // }
+getavlTemps(){
+  return this.http.get('http://localhost:4000/avlTemplates');
+}
+
+
+deleteavlTemp(id:any){
+  return this.http.delete('http://localhost:4000/delete_avltemp/'+id);
+}
+
+addavlTemp(data:any){
+  return this.http.put('http://localhost:4000/add_avltemp',{data});
+}
 }
 
 

@@ -24,7 +24,7 @@ export class AuthServiceService {
   
     }
     getuserdata(id:any){
-      return this.http.get('http://localhost:3000' +id)
+      return this.http.get('http://localhost:4000' +id)
     }
 
     adminLogin(data:any){
@@ -53,4 +53,19 @@ export class AuthServiceService {
 return this.http.post('http://localhost:3000/api/sendmail',{mail})
     }
 
+    getName(){
+
+      console.log("reqst received");
+      return this.http.get('http://localhost:4000/username')
+    }
+
+
+
+    savenameAdmin(data:any){
+      return this.http.post<any>('http://localhost:4000/changeAdminUname', {data});
+    }
+
+    savepwdAdmin(data:any){
+      return this.http.post<any>('http://localhost:4000/changeAdminPwd', {data});
+    }
 }
