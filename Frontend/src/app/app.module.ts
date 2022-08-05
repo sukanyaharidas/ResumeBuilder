@@ -44,6 +44,7 @@ import { EditPersonalComponent } from './edit-data/edit-personal/edit-personal.c
 import { EditHobbyComponent } from './edit-data/edit-hobby/edit-hobby.component';
 import { EditSkillComponent } from './edit-data/edit-skill/edit-skill.component';
 import { EditWorkComponent } from './edit-data/edit-work/edit-work.component';
+import { MytemplatesComponent } from './mytemplates/mytemplates.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { EditWorkComponent } from './edit-data/edit-work/edit-work.component';
     EditPersonalComponent,
     EditHobbyComponent,
     EditSkillComponent,
-    EditWorkComponent
+    EditWorkComponent,
+    MytemplatesComponent
     // ResumePreviewComponent
   ],
   imports: [

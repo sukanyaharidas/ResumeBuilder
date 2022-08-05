@@ -34,6 +34,8 @@ unique=[];
     this.unique=data.tempid;
     console.log('data in ',this.temparray);
     this.temparray = this.unique.filter((item, i, ar) => ar.indexOf(item) === i);
+    console.log('data in ',this.temparray);
+
     
   })
   }

@@ -1,4 +1,6 @@
 <!-- <app-logged-inheader></app-logged-inheader> -->
 <app-header></app-header>
-
+<h2 *ngIf="role==='user'" style="padding-left: 10em;font-weight:bolder;margin-left:5em;color:rgb(107, 103, 103);margin-left: 2em;font-size: 30px;font-style: italic;font-family: 'Courier New', Courier, monospace;">Welcome 
+      &nbsp;{{name}} &nbsp;<i class="bi bi-person-check-fill"></i></h2>
+      <app-mytemplates  *ngIf="role==='admin'" ></app-mytemplates>
 <app-sidenav></app-sidenav>

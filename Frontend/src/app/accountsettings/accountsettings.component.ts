@@ -19,6 +19,9 @@ export class AccountsettingsComponent implements OnInit {
   emailid:'',
   password:''
  }
+
+ uname:any='';
+ pwd:any=''
   constructor(private authservice:AuthServiceService) { }
 
   ngOnInit(): void {
@@ -43,10 +46,16 @@ export class AccountsettingsComponent implements OnInit {
 savename(){
   this.showme=!this.showme
   this.inactive1 = !(this.inactive1);
+  this.authservice.savenameAdmin(this.uname).subscribe((data:any)=>{
+    console.log("user name changed");
+  })
 }
-savemail(){
+savepwd(){
   this.inactive2= !(this.inactive2)
   this.showme2=!this.showme2
+  this.authservice.savepwdAdmin(this.pwd).subscribe((data:any)=>{
+    console.log("user name changed");
+  })
 }
 
 }

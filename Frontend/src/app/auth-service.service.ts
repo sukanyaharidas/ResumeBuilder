@@ -14,22 +14,22 @@ export class AuthServiceService {
 
   userSignup(users:any){
     console.log(users);
-    return this.http.post<any>('http://localhost:3000/signup', {users});
+    return this.http.post<any>('http://localhost:4000/signup', {users});
     }
 
 
   login(authData:any){
     console.log(authData);
-    return this.http.post<any>('http://localhost:3000/login',{authData});
+    return this.http.post<any>('http://localhost:4000/login',{authData});
   
     }
     getuserdata(id:any){
-      return this.http.get('http://localhost:3000' +id)
+      return this.http.get('http://localhost:4000' +id)
     }
 
     adminLogin(data:any){
       console.log(data);
-      return this.http.post<any>('http://localhost:3000/login_admin', {data});
+      return this.http.post<any>('http://localhost:4000/login_admin', {data});
     }
 
 
@@ -42,4 +42,19 @@ export class AuthServiceService {
       return  localStorage.getItem('token');
     }
 
+    getName(){
+
+      console.log("reqst received");
+      return this.http.get('http://localhost:4000/username')
+    }
+
+
+
+    savenameAdmin(data:any){
+      return this.http.post<any>('http://localhost:4000/changeAdminUname', {data});
+    }
+
+    savepwdAdmin(data:any){
+      return this.http.post<any>('http://localhost:4000/changeAdminPwd', {data});
+    }
 }

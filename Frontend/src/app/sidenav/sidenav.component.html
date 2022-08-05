@@ -10,36 +10,36 @@
     </div>
     <ul class="nav_list">
       <li *ngIf="userRole">
-        <a routerLink="/home_user" ></a></li>
+        <a routerLink="/home_user" ></a></li><br>
       <li *ngIf="auth.loggedIn() && userRole">
         <a routerLink="/myresumes" >
           <i class='bx bx-folder'></i>
           <span class="links_name" >My Projects</span>
         </a>
-      </li>
-      <li>
-        <a routerLink="/home_user" >
+      </li><br>
+      <li *ngIf="adminRole">
+        <a routerLink="/_templates" >
           <i class='bx bxs-grid-alt'></i>
           <span class="links_name">Templates</span>
         </a>
-      </li>
+      </li><br>
       <li *ngIf="userRole" >
         <a routerLink="/data" >
           <i class='bx bxs-grid-alt'></i>
           <span class="links_name" >Create Resume</span>
         </a>
-      </li>
+      </li><br>
       <li *ngIf="adminRole">
         <a routerLink="/Accountsettings">
           <i class='bx bx-user'></i>
           <span class="links_name">Account</span>
         </a>
       </li>
-      <li *ngIf="adminRole">
+      <!-- <li *ngIf="adminRole">
         <a routerLink="/home_user" >
           <i class='bx bx-help-circle'></i>
           <span class="links_name">About Us</span>
         </a>
-      </li> 
+      </li>  -->
     </ul>
   </div>

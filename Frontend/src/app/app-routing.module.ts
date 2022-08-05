@@ -16,22 +16,25 @@ import { UserUIComponent } from './user-ui/user-ui.component';
 import { AuthGuard } from './auth.guard';
 import { EditDataComponent } from './edit-data/edit-data.component';
 import { MyProjectComponent } from './my-project/my-project.component';
+import { MytemplatesComponent } from './mytemplates/mytemplates.component';
+import { RoleGuard } from './role.guard';
+import { UserGuard } from './user.guard';
 
 const routes: Routes = [{path:"",component: HomeComponent},
                         {path:"\login",component: LoginComponent},
                         {path:"\signup",component: SignupComponent},
-                        {path:"\_temp1",component: Template1Component},
-                        {path:"\data",component: Form1Component,canActivate:[AuthGuard]},
-                        {path:"\_temp2",component:Template2Component,canActivate:[AuthGuard]},
-                        {path:"\_temp3",component:Template3Component,canActivate:[AuthGuard]},
-                        {path:"\_temp4",component:Template4Component,canActivate:[AuthGuard]},
-                        {path:"\Choose_Template",component:ChooseTemmplateComponent,canActivate:[AuthGuard]},
+                        {path:"\_temp1",component: Template1Component,canActivate:[AuthGuard,UserGuard]},
+                        {path:"\data",component: Form1Component,canActivate:[AuthGuard,UserGuard]},
+                        {path:"\_temp2",component:Template2Component,canActivate:[AuthGuard,UserGuard]},
+                        {path:"\_temp3",component:Template3Component,canActivate:[AuthGuard,UserGuard]},
+                        {path:"\_temp4",component:Template4Component,canActivate:[AuthGuard,UserGuard]},
                         {path:"\home_user",component:UserUIComponent,canActivate:[AuthGuard]},
-                        {path:"\Accountsettings",component:AccountsettingsComponent,canActivate:[AuthGuard]},
+                        {path:"\Accountsettings",component:AccountsettingsComponent,canActivate:[AuthGuard,RoleGuard]},
                         {path:"\admin",component:AdminLoginComponent},
-                        {path:"\choosetemp",component:ChooseTemmplateComponent,canActivate:[AuthGuard]},
-                        {path:"\data_edit",component:EditDataComponent,canActivate:[AuthGuard]},
-                        {path:"\myresumes", component:MyProjectComponent,canActivate:[AuthGuard]}
+                        {path:"\choosetemp",component:ChooseTemmplateComponent,canActivate:[AuthGuard,UserGuard]},
+                        {path:"\data_edit",component:EditDataComponent,canActivate:[AuthGuard,UserGuard]},
+                        {path:"\myresumes", component:MyProjectComponent,canActivate:[AuthGuard,UserGuard]},
+                        {path:"\_templates", component:MytemplatesComponent,canActivate:[AuthGuard,RoleGuard]}
                         // {path:"\previewResume",
                         //  component:ResumePreviewComponent,
                         // children:[
